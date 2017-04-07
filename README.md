@@ -10,3 +10,7 @@ Too know how RooWifi Controller work, here is two wikis in english and french:
 You can go to the Wiki here : https://github.com/valentinbreiz/RooWifi-Controller/wiki (en)
 
 Vous pouvez accéder au Wiki ici: https://github.com/valentinbreiz/RooWifi-Controller/wiki/Acceuil (fr)
+
+You can download the app in the Google Playstore here: link
+
+Or you can go in the releases tab: https://github.com/valentinbreiz/RooWifi-Controller/releases
