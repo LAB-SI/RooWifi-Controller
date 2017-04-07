@@ -13,6 +13,6 @@ You can go to the Wiki here : https://github.com/valentinbreiz/RooWifi-Controlle
 Vous pouvez accéder au Wiki ici: https://github.com/valentinbreiz/RooWifi-Controller/wiki/Acceuil (fr)
 
 ## Download
-You can download the app in the Google Playstore here: link
+You can download the app in the Google Play Store here: link
 
-Or you can go in the releases tab: https://github.com/valentinbreiz/RooWifi-Controller/releases
+Or you can go in the release tab: https://github.com/valentinbreiz/RooWifi-Controller/releases
