@@ -57,7 +57,7 @@
                 android:id="@+id/textView26"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="- TinyDB pour la base de donnée." />
+                android:text="- TinyDB pour la gestion de données." />
 
             <TextView
                 android:id="@+id/textView4"
@@ -95,7 +95,7 @@
                 android:id="@+id/textView22"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="RooWifi Controller est une application gratuite, si vous l'avez acheté, vous pouvrez réclamer un remboursement." />
+                android:text="RooWifi Controller est une application gratuite, si vous l'avez acheté, vous pouvez réclamer un remboursement." />
 
             <TextView
                 android:id="@+id/textView24"
@@ -106,7 +106,7 @@
                 android:id="@+id/textView25"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="RooWifi Controller est en version 0.0.0" />
+                android:text="RooWifi Controller est en version 0.0.0." />
 
         </LinearLayout>
 

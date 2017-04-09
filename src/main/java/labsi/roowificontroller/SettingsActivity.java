@@ -103,7 +103,7 @@ public class SettingsActivity extends AppCompatActivity implements SeekBar.OnSee
 
     public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
         TextView tv = (TextView) findViewById(R.id.textView34) ;
-        tv.setText("Les données seront télchargées toutes les " + String.valueOf(progress) + " secondes.");
+        tv.setText("Les données seront téléchargées toutes les " + String.valueOf(progress) + " secondes.");
         TinyDB tinyDB = new TinyDB(this);
         if (progress <2) {
             progress = progress + 2;

@@ -24,7 +24,7 @@ public class MainActivity extends AppCompatActivity {
         if (ip.getText().toString().equals("")) {
             new AlertDialog.Builder(this)
                     .setTitle("Erreur")
-                    .setMessage("Vous avez oublié de renseigner 'IP !")
+                    .setMessage("Vous avez oublié de renseigner l'adresse IP !")
                     .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int which) {
                         }

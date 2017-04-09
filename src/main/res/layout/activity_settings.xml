@@ -12,13 +12,7 @@
         android:gravity="top"
         android:orientation="vertical"
         tools:layout_editor_absoluteX="8dp"
-        tools:layout_editor_absoluteY="8dp"><![CDATA[>
-
-
-
-
-
-        ]]>
+        tools:layout_editor_absoluteY="8dp">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -99,7 +93,7 @@
                 android:id="@+id/textView34"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Les données seront télchargées toutes les 00 secondes." />
+                android:text="Les données seront téléchargées toutes les 00 secondes." />
 
             <TextView
                 android:id="@+id/textView31"

@@ -12,7 +12,7 @@ public class AboutActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_about);
         TextView versiontext = (TextView) findViewById(R.id.textView25);
-        versiontext.setText("RooWifi Controller est en version " + version.version);
+        versiontext.setText("RooWifi Controller est en version " + version.version+".");
     }
 
     public void Link(View view) {
