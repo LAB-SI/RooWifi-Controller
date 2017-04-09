@@ -1,4 +1,4 @@
-# RooWifi-Controller
+# RooWifi Controller
 RooWifi Controller is an android application to control your RooWifi card. This app is developed in the "LAB SI" of the Lycée Saint-Éxupery of Parentis-en-Born, France.
 
 <p align="center">
@@ -13,6 +13,6 @@ You can go to the Wiki here : https://github.com/valentinbreiz/RooWifi-Controlle
 Vous pouvez accéder au Wiki ici: https://github.com/valentinbreiz/RooWifi-Controller/wiki/Acceuil (fr)
 
 ## Download
-You can download the app in the Google Play Store here: link
+You can download the app in the Google Play Store here: Soon...
 
 Or you can go in the release tab: https://github.com/valentinbreiz/RooWifi-Controller/releases
