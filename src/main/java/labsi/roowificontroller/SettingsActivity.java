@@ -1,6 +1,7 @@
 package labsi.roowificontroller;
 
 import android.app.AlertDialog;
+import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -48,6 +49,13 @@ public class SettingsActivity extends AppCompatActivity implements SeekBar.OnSee
     }
 
     public void modifip(View view) {
+        final ProgressDialog pDialog;
+        pDialog = new ProgressDialog(SettingsActivity.this);
+        pDialog.setTitle("Tentative de connexion");
+        pDialog.setMessage("Veuillez patienter...");
+        pDialog.setIndeterminate(false);
+        pDialog.show();
+
         EditText editText = (EditText) findViewById(R.id.editText);
         String ip = editText.getText().toString();
         Ion.with(getApplicationContext())
@@ -58,6 +66,7 @@ public class SettingsActivity extends AppCompatActivity implements SeekBar.OnSee
                     @Override
                     public void onCompleted(Exception e, String result) {
                         if (result == null) {
+                            pDialog.dismiss();
                             new AlertDialog.Builder(SettingsActivity.this)
                                     .setTitle("Erreur")
                                     .setMessage("Impossible de se connecter à la carte RooWifi !\nAvez vous renseigné la bonne adresse IP ?")
@@ -69,14 +78,16 @@ public class SettingsActivity extends AppCompatActivity implements SeekBar.OnSee
                         }
                         else {
                             if (result.startsWith("<response>")) {
+                                pDialog.dismiss();
                                 EditText editText = (EditText) findViewById(R.id.editText);
                                 String text = editText.getText().toString();
                                 TinyDB tinyDB = new TinyDB(SettingsActivity.this);
                                 tinyDB.putString("ip", text);
-                                Toast.makeText(SettingsActivity.this, "Connexion à " + text + " en cours...", Toast.LENGTH_LONG).show();
+                                Toast.makeText(SettingsActivity.this, "Connexion à " + text + " réussie !", Toast.LENGTH_LONG).show();
                                 Intent intent = new Intent(SettingsActivity.this,SecondActivity.class);
                                 startActivity(intent);
                             } else {
+                                pDialog.dismiss();
                                 new AlertDialog.Builder(SettingsActivity.this)
                                         .setTitle("Erreur")
                                         .setMessage("Impossible de se connecter à la carte RooWifi !\nAvez vous renseigné la bonne adresse IP ?")
