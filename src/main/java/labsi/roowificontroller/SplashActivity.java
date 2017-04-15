@@ -10,8 +10,11 @@ public class SplashActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
-        TextView versiontext = (TextView) findViewById(R.id.textView2);
-        versiontext.setText("RooWifi Controller v" + version.version);
+
+        TinyDB tinyDB = new TinyDB(SplashActivity.this);
+        tinyDB.putInt("actualisation", 0);
+        tinyDB.putInt("premierefois", 0);
+
         Thread timerThread = new Thread(){
             public void run(){
                 try{

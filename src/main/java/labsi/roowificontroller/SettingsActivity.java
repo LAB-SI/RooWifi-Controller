@@ -26,25 +26,35 @@ public class SettingsActivity extends AppCompatActivity implements SeekBar.OnSee
         SeekBar sb = (SeekBar) findViewById(R.id.seekBar);
         TinyDB tinyDB = new TinyDB(this);
         int tick = tinyDB.getInt("eachtick");
+        tinyDB.putInt("premierefois", 0);
         sb.setProgress(tick);
         TextView tv = (TextView) findViewById(R.id.textView34) ;
-        tv.setText("Les données seront télchargées toutes les " + tick + " secondes.");
+        tv.setText("Les données seront téléchargées toutes les " + tick + " secondes.");
         sb.setOnSeekBarChangeListener(SettingsActivity.this);
 
         TinyDB tinyDB1 = new TinyDB(SettingsActivity.this);
-        int checked = tinyDB1.getInt("checked");
+        int downloadeachtick = tinyDB1.getInt("downloadeachtick");
 
         CheckBox checkbox =(CheckBox)findViewById(R.id.checkBox);
 
-        if (checked == 1) {
+        if (downloadeachtick == 1) {
             checkbox.setChecked(true);
         }
-        else if (checked == 0){
+        else if (downloadeachtick == 0){
             checkbox.setChecked(false);
             SeekBar seekBar = (SeekBar) findViewById(R.id.seekBar);
             seekBar.setVisibility(View.GONE);
             TextView textView = (TextView)findViewById(R.id.textView34);
             textView.setVisibility(View.GONE);
+        }
+
+        int modeavance = tinyDB.getInt("modeavance");
+        CheckBox checkbox1 =(CheckBox)findViewById(R.id.checkBox2);
+        if (modeavance == 1) {
+            checkbox1.setChecked(true);
+        }
+        else if (modeavance == 0){
+            checkbox1.setChecked(false);
         }
     }
 
@@ -105,6 +115,7 @@ public class SettingsActivity extends AppCompatActivity implements SeekBar.OnSee
     }
     public void reinitialiser(View view) {
         TinyDB tinyDB = new TinyDB(this);
+        tinyDB.putInt("downloadeachtick", 0);
         tinyDB.clear();
         Toast.makeText(this, "Paramètres réinitialisées !", Toast.LENGTH_LONG).show();
         Intent intent = new Intent(SettingsActivity.this,SplashActivity.class);
@@ -116,8 +127,8 @@ public class SettingsActivity extends AppCompatActivity implements SeekBar.OnSee
         TextView tv = (TextView) findViewById(R.id.textView34) ;
         tv.setText("Les données seront téléchargées toutes les " + String.valueOf(progress) + " secondes.");
         TinyDB tinyDB = new TinyDB(this);
-        if (progress <2) {
-            progress = progress + 2;
+        if (progress <1) {
+            progress = progress + 1;
         }
         tinyDB.putInt("eachtick", progress);
     }
@@ -141,7 +152,7 @@ public class SettingsActivity extends AppCompatActivity implements SeekBar.OnSee
             TextView textView = (TextView)findViewById(R.id.textView34);
             textView.setVisibility(View.VISIBLE);
             TinyDB tinyDB = new TinyDB(this);
-            tinyDB.putInt("checked", 1);
+            tinyDB.putInt("downloadeachtick", 1);
         }
         else {
             SeekBar seekBar = (SeekBar) findViewById(R.id.seekBar);
@@ -149,7 +160,21 @@ public class SettingsActivity extends AppCompatActivity implements SeekBar.OnSee
             TextView textView = (TextView)findViewById(R.id.textView34);
             textView.setVisibility(View.GONE);
             TinyDB tinyDB = new TinyDB(this);
-            tinyDB.putInt("checked", 0);
+            tinyDB.putInt("downloadeachtick", 0);
+        }
+    }
+    public void checkbox1_clicked(View v) {
+        CheckBox checkbox =(CheckBox)findViewById(R.id.checkBox2);
+        if(checkbox.isChecked()){
+            Toast.makeText(SettingsActivity.this, "Mode avancé activé !", Toast.LENGTH_LONG).show();
+            TinyDB tinyDB = new TinyDB(this);
+            tinyDB.putInt("modeavance", 1);
+
+        }
+        else {
+            Toast.makeText(SettingsActivity.this, "Mode avancé désactivé !", Toast.LENGTH_LONG).show();
+            TinyDB tinyDB = new TinyDB(this);
+            tinyDB.putInt("modeavance", 0);
         }
     }
 }

@@ -9,10 +9,8 @@ import android.view.View;
 import android.widget.EditText;
 import android.app.AlertDialog;
 import android.widget.Toast;
-
 import com.koushikdutta.async.future.FutureCallback;
 import com.koushikdutta.ion.Ion;
-
 
 public class MainActivity extends AppCompatActivity {
 
@@ -65,6 +63,8 @@ public class MainActivity extends AppCompatActivity {
                             pDialog.dismiss();
                             TinyDB tinyDB = new TinyDB(MainActivity.this);
                             tinyDB.putInt("installation", 1);
+                            tinyDB.putInt("premierefois", 1);
+                            tinyDB.putInt("actualisation", 0);
                             tinyDB.putString("ip", ip.getText().toString());
                             Toast.makeText(MainActivity.this, "Connexion à " + ip.getText().toString() + " réussie !", Toast.LENGTH_LONG).show();
                             Intent intent;
@@ -82,10 +82,8 @@ public class MainActivity extends AppCompatActivity {
                                     .show();
                         }
                     }
-
                 }
             });
-}
-
+        }
     }
 }

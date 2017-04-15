@@ -27,9 +27,6 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Map;
-
-//import com.google.gson.Gson;
-
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
@@ -42,7 +39,6 @@ import android.util.Log;
 
 
 public class TinyDB {
-
     private SharedPreferences preferences;
     private String DEFAULT_APP_IMAGEDATA_DIRECTORY;
     private String lastImagePath = "";
@@ -50,9 +46,6 @@ public class TinyDB {
     public TinyDB(Context appContext) {
         preferences = PreferenceManager.getDefaultSharedPreferences(appContext);
     }
-
-
-
 
     public Bitmap getImage(String path) {
         Bitmap bitmapFromPath = null;
@@ -66,7 +59,6 @@ public class TinyDB {
 
         return bitmapFromPath;
     }
-
 
     public String getSavedImagePath() {
         return lastImagePath;
@@ -87,7 +79,6 @@ public class TinyDB {
         return mFullPath;
     }
 
-
     public boolean putImageWithFullPath(String fullPath, Bitmap theBitmap) {
         return !(fullPath == null || theBitmap == null) && saveBitmap(fullPath, theBitmap);
     }
@@ -101,28 +92,21 @@ public class TinyDB {
                 return "";
             }
         }
-
         return mFolder.getPath() + '/' + imageName;
     }
-
 
     private boolean saveBitmap(String fullPath, Bitmap bitmap) {
         if (fullPath == null || bitmap == null)
             return false;
-
         boolean fileCreated = false;
         boolean bitmapCompressed = false;
         boolean streamClosed = false;
-
         File imageFile = new File(fullPath);
-
         if (imageFile.exists())
             if (!imageFile.delete())
                 return false;
-
         try {
             fileCreated = imageFile.createNewFile();
-
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -131,80 +115,61 @@ public class TinyDB {
         try {
             out = new FileOutputStream(imageFile);
             bitmapCompressed = bitmap.compress(CompressFormat.PNG, 100, out);
-
         } catch (Exception e) {
             e.printStackTrace();
             bitmapCompressed = false;
-
         } finally {
             if (out != null) {
                 try {
                     out.flush();
                     out.close();
                     streamClosed = true;
-
                 } catch (IOException e) {
                     e.printStackTrace();
                     streamClosed = false;
                 }
             }
         }
-
         return (fileCreated && bitmapCompressed && streamClosed);
     }
-
-    // Getters
-
 
     public int getInt(String key) {
         return preferences.getInt(key, 0);
     }
-
     public ArrayList<Integer> getListInt(String key) {
         String[] myList = TextUtils.split(preferences.getString(key, ""), "‚‗‚");
         ArrayList<String> arrayToList = new ArrayList<String>(Arrays.asList(myList));
         ArrayList<Integer> newList = new ArrayList<Integer>();
-
         for (String item : arrayToList)
             newList.add(Integer.parseInt(item));
-
         return newList;
     }
-
 
     public long getLong(String key, long defaultValue) {
         return preferences.getLong(key, defaultValue);
     }
 
-
     public float getFloat(String key) {
         return preferences.getFloat(key, 0);
     }
 
-
     public double getDouble(String key, double defaultValue) {
         String number = getString(key);
-
         try {
             return Double.parseDouble(number);
-
         } catch (NumberFormatException e) {
             return defaultValue;
         }
     }
 
-
     public ArrayList<Double> getListDouble(String key) {
         String[] myList = TextUtils.split(preferences.getString(key, ""), "‚‗‚");
         ArrayList<String> arrayToList = new ArrayList<String>(Arrays.asList(myList));
         ArrayList<Double> newList = new ArrayList<Double>();
-
         for (String item : arrayToList)
             newList.add(Double.parseDouble(item));
-
         return newList;
     }
-
 
     public String getString(String key) {
         return preferences.getString(key, "");
@@ -214,16 +179,13 @@ public class TinyDB {
         return new ArrayList<String>(Arrays.asList(TextUtils.split(preferences.getString(key, ""), "‚‗‚")));
     }
 
-
     public boolean getBoolean(String key) {
         return preferences.getBoolean(key, false);
     }
 
-
     public ArrayList<Boolean> getListBoolean(String key) {
         ArrayList<String> myList = getListString(key);
         ArrayList<Boolean> newList = new ArrayList<Boolean>();
-
         for (String item : myList) {
             if (item.equals("true")) {
                 newList.add(true);
@@ -231,7 +193,6 @@ public class TinyDB {
                 newList.add(false);
             }
         }
-
         return newList;
     }
 
@@ -240,13 +201,11 @@ public class TinyDB {
         preferences.edit().putInt(key, value).apply();
     }
 
-
     public void putListInt(String key, ArrayList<Integer> intList) {
         checkForNullKey(key);
         Integer[] myIntList = intList.toArray(new Integer[intList.size()]);
         preferences.edit().putString(key, TextUtils.join("‚‗‚", myIntList)).apply();
     }
-
 
     public void putLong(String key, long value) {
         checkForNullKey(key);
@@ -258,12 +217,10 @@ public class TinyDB {
         preferences.edit().putFloat(key, value).apply();
     }
 
-
     public void putDouble(String key, double value) {
         checkForNullKey(key);
         putString(key, String.valueOf(value));
     }
-
 
     public void putListDouble(String key, ArrayList<Double> doubleList) {
         checkForNullKey(key);
@@ -271,19 +228,16 @@ public class TinyDB {
         preferences.edit().putString(key, TextUtils.join("‚‗‚", myDoubleList)).apply();
     }
 
-
     public void putString(String key, String value) {
         checkForNullKey(key); checkForNullValue(value);
         preferences.edit().putString(key, value).apply();
     }
-
 
     public void putListString(String key, ArrayList<String> stringList) {
         checkForNullKey(key);
         String[] myStringList = stringList.toArray(new String[stringList.size()]);
         preferences.edit().putString(key, TextUtils.join("‚‗‚", myStringList)).apply();
     }
-
 
     public void putBoolean(String key, boolean value) {
         checkForNullKey(key);
@@ -293,7 +247,6 @@ public class TinyDB {
     public void putListBoolean(String key, ArrayList<Boolean> boolList) {
         checkForNullKey(key);
         ArrayList<String> newList = new ArrayList<String>();
-
         for (Boolean item : boolList) {
             if (item) {
                 newList.add("true");
@@ -301,15 +254,12 @@ public class TinyDB {
                 newList.add("false");
             }
         }
-
         putListString(key, newList);
     }
-
 
     public void remove(String key) {
         preferences.edit().remove(key).apply();
     }
-
 
     public boolean deleteImage(String path) {
         return new File(path).delete();
@@ -319,33 +269,26 @@ public class TinyDB {
         preferences.edit().clear().apply();
     }
 
-
     public Map<String, ?> getAll() {
         return preferences.getAll();
     }
 
-
     public void registerOnSharedPreferenceChangeListener(
             SharedPreferences.OnSharedPreferenceChangeListener listener) {
-
         preferences.registerOnSharedPreferenceChangeListener(listener);
     }
 
     public void unregisterOnSharedPreferenceChangeListener(
             SharedPreferences.OnSharedPreferenceChangeListener listener) {
-
         preferences.unregisterOnSharedPreferenceChangeListener(listener);
     }
-
 
     public static boolean isExternalStorageWritable() {
         return Environment.MEDIA_MOUNTED.equals(Environment.getExternalStorageState());
     }
 
-
     public static boolean isExternalStorageReadable() {
         String state = Environment.getExternalStorageState();
-
         return Environment.MEDIA_MOUNTED.equals(state) ||
                 Environment.MEDIA_MOUNTED_READ_ONLY.equals(state);
     }

@@ -4,20 +4,22 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:scrollbarAlwaysDrawVerticalTrack="false"
+    android:scrollbars="vertical"
     tools:context="labsi.roowificontroller.SettingsActivity">
 
-    <LinearLayout
+    <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:gravity="top"
+        android:layout_height="wrap_content"
+        android:fillViewport="false"
         android:orientation="vertical"
-        tools:layout_editor_absoluteX="8dp"
-        tools:layout_editor_absoluteY="8dp">
+        android:padding="10dp">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
+            android:scrollbars="vertical"
             tools:layout_editor_absoluteX="8dp"
             tools:layout_editor_absoluteY="0dp">
 
@@ -50,7 +52,7 @@
                 tools:layout_editor_absoluteY="136dp" />
 
             <TextView
-                android:id="@+id/textView29"
+                android:id="@+id/textView57"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textSize="24sp" />
@@ -118,8 +120,35 @@
                 tools:layout_editor_absoluteX="8dp"
                 tools:layout_editor_absoluteY="136dp" />
 
+            <TextView
+                android:id="@+id/textView29"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="24sp" />
+
+            <TextView
+                android:id="@+id/textView56"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Mode avancé"
+                android:textColor="#444444"
+                android:textSize="24sp" />
+
+            <CheckBox
+                android:id="@+id/checkBox2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Activer le mode avancé"
+                android:onClick="checkbox1_clicked"/>
+
+            <TextView
+                android:id="@+id/textView59"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Le mode avancé permet d'avoir accès a certaines informations supplémentaires." />
+
         </LinearLayout>
 
-    </LinearLayout>
+    </ScrollView>
 
 </android.support.constraint.ConstraintLayout>
