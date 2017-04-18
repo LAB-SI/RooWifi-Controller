@@ -2,7 +2,7 @@
 RooWifi Controller is an android application to control your RooWifi card, that control the Irobot Roomba vacuum cleaner. This app is developed in the LAB SI of the Lycée Saint-Éxupery of Parentis-en-Born, France.
 
 <p align="center">
-  <img src="http://partagedefiches.xyz/test/roowificontroller-preview.gif" title="RooWifi Controller Preview">
+  <img src="https://image.noelshack.com/fichiers/2017/14/1491572104-logo.png" width="256" title="LAB SI Logo">
 </p>
 
 ## Wiki
