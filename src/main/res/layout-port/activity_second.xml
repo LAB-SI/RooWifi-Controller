@@ -40,19 +40,19 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:orientation="horizontal"
+                        android:orientation="vertical"
                         tools:layout_editor_absoluteX="0dp"
                         tools:layout_editor_absoluteY="0dp">
 
                         <LinearLayout
-                            android:layout_width="wrap_content"
-                            android:layout_height="match_parent"
-                            android:gravity="left|center"
-                            android:orientation="vertical">
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:orientation="horizontal">
 
                             <Button
                                 android:id="@+id/button3"
-                                android:layout_width="match_parent"
+                                android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_above="@+id/button5"
                                 android:layout_alignParentEnd="true"
@@ -65,7 +65,7 @@
 
                             <Button
                                 android:id="@+id/button6"
-                                android:layout_width="match_parent"
+                                android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_alignParentBottom="true"
                                 android:layout_alignParentLeft="true"
@@ -78,7 +78,7 @@
 
                             <Button
                                 android:id="@+id/button3"
-                                android:layout_width="match_parent"
+                                android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_above="@+id/button4"
                                 android:layout_alignParentLeft="true"
@@ -92,7 +92,7 @@
 
                             <Button
                                 android:id="@+id/button11"
-                                android:layout_width="match_parent"
+                                android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:onClick="Commander"
                                 android:text="@string/activity_second_manual" />
@@ -113,22 +113,24 @@
                                 tools:layout_editor_absoluteY="8dp">
 
                                 <View
-                                    android:layout_width="3dp"
-                                    android:layout_height="match_parent"
+                                    android:id="@+id/view"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="3dp"
                                     android:background="@android:color/darker_gray" />
 
                                 <LinearLayout
                                     android:id="@+id/linearLayout1"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:layout_alignParentLeft="true"
-                                    android:layout_alignParentTop="true"
-                                    android:layout_marginBottom="10dp"
-                                    android:layout_marginLeft="10dp"
-                                    android:layout_marginTop="10dp"
-                                    android:layout_toLeftOf="@+id/layout_joystick"
-                                    android:layout_toStartOf="@+id/layout_joystick"
+                                    android:layout_below="@+id/view"
+                                    android:layout_toEndOf="@+id/textView10"
+                                    android:layout_toRightOf="@+id/textView10"
                                     android:orientation="vertical">
+
+                                    <TextView
+                                        android:id="@+id/textView8"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content" />
 
                                     <TextView
                                         android:id="@+id/textView11"
@@ -155,66 +157,13 @@
 
                                     <TextView
                                         android:id="@+id/textView19"
-                                        android:layout_width="wrap_content"
+                                        android:layout_width="match_parent"
                                         android:layout_height="wrap_content"
                                         android:text="@string/activity_second_nbsensorupdate"
                                         android:textColor="#444444" />
 
                                     <TextView
                                         android:id="@+id/textView60"
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:layout_above="@+id/button3"
-                                        android:layout_alignParentLeft="true"
-                                        android:layout_alignParentStart="true"
-                                        android:elevation="1dp"
-                                        android:text="      "
-                                        android:textColor="#444444"
-                                        android:textSize="14sp"
-                                        tools:layout_editor_absoluteX="8dp"
-                                        tools:layout_editor_absoluteY="0dp" />
-
-                                    <TextView
-                                        android:id="@+id/textView12"
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:text="Joystick :"
-                                        android:textColor="#444444"
-                                        android:textSize="14sp"
-                                        android:textStyle="bold" />
-
-                                    <TextView
-                                        android:id="@+id/textView1"
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:layout_alignParentLeft="true"
-                                        android:layout_alignParentTop="true"
-                                        android:text="X : 0"
-                                        android:textColor="#444444"
-                                        android:textSize="14sp" />
-
-                                    <TextView
-                                        android:id="@+id/textView2"
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:layout_alignParentLeft="true"
-                                        android:layout_below="@+id/textView1"
-                                        android:text="Y : 0"
-                                        android:textColor="#444444"
-                                        android:textSize="14sp" />
-
-                                    <TextView
-                                        android:id="@+id/textView5"
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:layout_alignParentLeft="true"
-                                        android:layout_below="@+id/textView3"
-                                        android:text="@string/activity_second_direction_center"
-                                        android:textColor="#444444"
-                                        android:textSize="14sp" />
-
-                                    <TextView
-                                        android:id="@+id/textView61"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
                                         android:layout_above="@+id/button3"
@@ -252,7 +201,7 @@
 
                                     <TextView
                                         android:id="@+id/textView20"
-                                        android:layout_width="wrap_content"
+                                        android:layout_width="match_parent"
                                         android:layout_height="wrap_content"
                                         android:text="@string/activity_second_loadingdata"
                                         android:textColor="#444444" />
@@ -276,10 +225,95 @@
                                     android:id="@+id/layout_joystick"
                                     android:layout_width="200dp"
                                     android:layout_height="200dp"
+                                    android:layout_alignParentBottom="true"
+                                    android:layout_centerHorizontal="true"
+                                    android:background="@drawable/image_button_bg"></RelativeLayout>
+
+                                <LinearLayout
+                                    android:id="@+id/linearLayout3"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_below="@+id/view"
+                                    android:layout_toLeftOf="@+id/textView18"
+                                    android:layout_toStartOf="@+id/textView18"
+                                    android:orientation="vertical">
+
+                                    <TextView
+                                        android:id="@+id/textView9"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content" />
+
+                                    <TextView
+                                        android:id="@+id/textView5"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_alignParentLeft="true"
+                                        android:layout_below="@+id/textView3"
+                                        android:text="@string/activity_second_direction_center"
+                                        android:textColor="#444444"
+                                        android:textSize="14sp" />
+
+                                    <TextView
+                                        android:id="@+id/textView2"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_alignParentLeft="true"
+                                        android:layout_below="@+id/textView1"
+                                        android:text="Y : 0"
+                                        android:textColor="#444444"
+                                        android:textSize="14sp" />
+
+                                    <TextView
+                                        android:id="@+id/textView1"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_alignParentLeft="true"
+                                        android:layout_alignParentTop="true"
+                                        android:text="X : 0"
+                                        android:textColor="#444444"
+                                        android:textSize="14sp" />
+
+                                    <TextView
+                                        android:id="@+id/textView12"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:text="Joystick :"
+                                        android:textColor="#444444"
+                                        android:textSize="14sp"
+                                        android:textStyle="bold" />
+
+                                    <TextView
+                                        android:id="@+id/textView61"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_above="@+id/button3"
+                                        android:layout_alignParentLeft="true"
+                                        android:layout_alignParentStart="true"
+                                        android:elevation="1dp"
+                                        android:text="      "
+                                        android:textColor="#444444"
+                                        android:textSize="14sp"
+                                        tools:layout_editor_absoluteX="8dp"
+                                        tools:layout_editor_absoluteY="0dp" />
+                                </LinearLayout>
+
+                                <TextView
+                                    android:id="@+id/textView10"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_alignParentLeft="true"
+                                    android:layout_alignParentStart="true"
+                                    android:layout_below="@+id/view"
+                                    android:text="     " />
+
+                                <TextView
+                                    android:id="@+id/textView18"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
                                     android:layout_alignParentEnd="true"
                                     android:layout_alignParentRight="true"
-                                    android:layout_centerVertical="true"
-                                    android:background="@drawable/image_button_bg"></RelativeLayout>
+                                    android:layout_below="@+id/view"
+                                    android:text="     " />
 
                             </RelativeLayout>
 
@@ -303,11 +337,11 @@
                             android:id="@+id/linearLayout2"
                             android:layout_width="wrap_content"
                             android:layout_height="match_parent"
-                            android:gravity="center"
-                            android:orientation="vertical"
                             android:layout_alignParentTop="true"
+                            android:layout_toEndOf="@+id/textView57"
                             android:layout_toRightOf="@+id/textView57"
-                            android:layout_toEndOf="@+id/textView57">
+                            android:gravity="center"
+                            android:orientation="vertical">
 
                             <TextView
                                 android:id="@+id/textView35"
@@ -388,18 +422,6 @@
                                 android:text="@string/activity_second_loadingdata"
                                 android:textColor="#444444"
                                 android:textSize="16sp" />
-
-                        </LinearLayout>
-
-                        <LinearLayout
-                            android:id="@+id/linearLayout"
-                            android:layout_width="wrap_content"
-                            android:layout_height="match_parent"
-                            android:gravity="center"
-                            android:orientation="vertical"
-                            android:layout_alignParentTop="true"
-                            android:layout_toRightOf="@+id/textView58"
-                            android:layout_toEndOf="@+id/textView58">
 
                             <TextView
                                 android:id="@+id/textView46"
@@ -482,15 +504,6 @@
                                 android:textSize="16sp" />
 
                         </LinearLayout>
-
-                        <TextView
-                            android:id="@+id/textView58"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_alignParentTop="true"
-                            android:layout_toEndOf="@+id/linearLayout2"
-                            android:layout_toRightOf="@+id/linearLayout2"
-                            android:text="     " />
 
                     </RelativeLayout>
 

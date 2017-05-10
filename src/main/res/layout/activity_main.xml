@@ -6,56 +6,52 @@
     android:layout_height="match_parent"
     tools:context="labsi.roowificontroller.MainActivity">
 
-    <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    <ScrollView
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:fillViewport="false"
         android:orientation="vertical"
-        android:padding="10dp">
-
-    <LinearLayout
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:gravity="top"
-        android:orientation="vertical"
+        android:padding="10dp"
         tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="0dp">
+        tools:layout_editor_absoluteY="2dp">
 
-        <EditText
-            android:id="@+id/editText"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:contentDescription="192.168.0.0"
-            android:ems="10"
-            android:hint="192.168.0.0"
-            android:inputType="textPersonName"
-            tools:layout_editor_absoluteX="8dp"
-            tools:layout_editor_absoluteY="33dp" />
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:gravity="top"
+            android:orientation="vertical"
+            tools:layout_editor_absoluteX="0dp"
+            tools:layout_editor_absoluteY="0dp">
 
-        <Button
-            android:id="@+id/button"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:onClick="Connexion"
-            android:text="Se connecter"
-            tools:layout_editor_absoluteX="8dp"
-            tools:layout_editor_absoluteY="136dp" />
+            <EditText
+                android:id="@+id/editText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:contentDescription="192.168.0.0"
+                android:ems="10"
+                android:hint="192.168.0.0"
+                android:inputType="textPersonName"
+                tools:layout_editor_absoluteX="8dp"
+                tools:layout_editor_absoluteY="33dp" />
 
-        <TextView
-            android:id="@+id/textView43"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Comment trouver l'IP de sa carte RooWifi ?" />
+            <Button
+                android:id="@+id/button"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:onClick="Connexion"
+                android:text="@string/activity_main_button"
+                tools:layout_editor_absoluteX="8dp"
+                tools:layout_editor_absoluteY="136dp" />
 
-        <ImageView
-            android:id="@+id/imageView"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            app:srcCompat="@drawable/roowifi"
-            tools:layout_editor_absoluteX="8dp"
-            tools:layout_editor_absoluteY="8dp" />
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:srcCompat="@drawable/roowifi"
+                tools:layout_editor_absoluteX="8dp"
+                tools:layout_editor_absoluteY="8dp" />
 
-    </LinearLayout>
+        </LinearLayout>
     </ScrollView>
 
 </android.support.constraint.ConstraintLayout>

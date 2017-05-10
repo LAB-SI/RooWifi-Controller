@@ -1,83 +1,77 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-
     <string name="link"><a href="https://github.com/valentinbreiz/RooWifi-Controller">Page GitHub du projet</a></string>
     <string name="menu_settings">Settings</string>
-    <string name="Debug">Debug Mode</string>
-    <string name="Ip">Enter Roomba IP</string>
-    <string name="UnaVez">Go settings and set the Roomba IP in order to control it!\n\nPress Connect Button and Start Button to enable or disable Accelerometer to drive Roomba.</string>
-    <string name="title_activity_settings">Settings</string>
+<string name="activity_main_title">Connect to the RooWifi card</string>
+<string name="activity_main_button">Connect</string>
+<string name="activity_main_forgotip">You forgot to enter the IP address!</string>
 
-    <!-- Strings related to Settings -->
+<string name="activity_second_information">For more information about sensors, slide towards right.</string>
+<string name="activity_second_nonetwork">You are not connected to any network!</string>
+<string name="activity_second_direction_front">Direction: Front</string>
+<string name="activity_second_direction_frontright">Direction: Front Right</string>
+<string name="activity_second_direction_right">Direction: Right</string>
+<string name="activity_second_direction_rearright">Direction: Rear Right</string>
+<string name="activity_second_direction_rear">Direction: Rear</string>
+<string name="activity_second_direction_rearleft">Direction: Rear Left</string>
+<string name="activity_second_direction_left">Direction: Left</string>
+<string name="activity_second_direction_frontleft">Direction: Front Left</string>
+<string name="activity_second_direction_center">Direction: Center</string>
+<string name="activity_second_request">Request:</string>
+<string name="activity_second_failbutconnected">An error has occurred but the command has been sent!\nVerify that your Roomba vacuum is turned on and the RooWifi card is plugged in.</string>
+<string name="activity_second_clean">Clean</string>
+<string name="activity_second_dock">Dock</string>
+<string name="activity_second_spot">Spot</string>
+<string name="activity_second_manual">Manual mode</string>
+<string name="activity_second_title1">Control of the RooWifi card</string>
+<string name="activity_second_title2">Data of sensors</string>
+<string name="activity_second_unknownerror">Unknown error.</string>
+<string name="activity_second_result">Result: \'</string>
+<string name="activity_second_cantconnect">Unable to connect to the RooWifi card.</string>
+<string name="activity_second_batterylevel">Battery level:</string>
+<string name="activity_second_nbsensorupdate">Number of sensor updates:</string>
+<string name="activity_second_network">Network:</string>
+<string name="activity_second_infos">Roomba Informations:</string>
+<string name="activity_second_temperature">Temperature:</string>
 
-    <!-- Example General settings -->
-    <string name="pref_header_general">General</string>
+    <string name="activity_second_chargingstate2">Charging state : Charging</string>
+    <string name="activity_second_chargingstate4">Charging state : Discharging</string>
+    <string name="activity_second_chargingstateunknown">Charging state : Unknown</string>
+    <string name="activity_second_loadingdata">Loading data...</string>
+    <string name="activity_second_buttonresetcoo">Reset Wifi</string>
 
-    <string name="pref_title_social_recommendations">Enable social recommendations</string>
-    <string name="pref_description_social_recommendations">Recommendations for people to contact
-        based on your message history
-    </string>
+<string name="activity_second_menusettings">Settings</string>
+<string name="activity_second_menuabout">About</string>
 
-    <string name="pref_title_display_name">Display name</string>
-    <string name="pref_default_display_name">John Smith</string>
+<string name="activity_settings_title">Settings</string>
+<string name="activity_settings_modifip">Edit IP address</string>
+<string name="activity_settings_buttonedit">Edit</string>
+<string name="activity_settings_intervaldownload">Choose download interval</string>
+<string name="activity_settings_checkboxintervaldownload">Enable systematic downloading of data</string>
+<string name="activity_settings_intervaldownloadinfo1">The roomba.xml file (containing the sensor data) is updated every 0.5 seconds.</string>
+<string name="activity_settings_intervaldownloadinfo2">With which interval do you want this data to be downloaded to the RooWifi Controller application?</string>
+<string name="activity_settings_intervaldownloadinfo3">The data will be downloaded every 00 seconds.</string>
+<string name="activity_settings_resetsettings">Reset settings</string>
+<string name="activity_settings_buttonreset">Reset</string>
+<string name="activity_settings_advancedmode">Advanced mode</string>
+<string name="activity_settings_checkboxadvancedmode">Enable advanced mode</string>
+<string name="activity_settings_advancedmodeinfo">Advanced mode provides access to some additional information.</string>
+<string name="activity_settings_intervaldownloadinfo4">The data will be downloaded every</string>
+<string name="activity_settings_intervaldownloadinfo5">seconds.</string>
+<string name="activity_settings_settinsreseted">Settings have been reset!</string>
+<string name="activity_settings_advancedmodeenabled">Advanced mode enabled!</string>
+<string name="activity_settings_advancedmodedisabled">Advanced mode disabled!</string>
 
-    <string name="pref_title_add_friends_to_messages">Add friends to messages</string>
-    <string-array name="pref_example_list_titles">
-        <item>Always</item>
-        <item>When possible</item>
-        <item>Never</item>
-    </string-array>
-    <string-array name="pref_example_list_values">
-        <item>1</item>
-        <item>0</item>
-        <item>-1</item>
-    </string-array>
+<string name="view_about_infos">RooWifi Controller is an application that will allow you to control your RooWifi card! Just enter the IP of it and the trick is played!</string>
+<string name="view_about_credits">Credits:\n- Valentin Charbonnier (valentinbreiz.github.io)\n- Ake Exorcist (JoyStick)\n- TinyDB (backed up data management)</string>
+<string name="view_about_creator">Created at the LAB SI of the Lycée Saint-Éxupery in Parentis-en-Born.</string>
 
-    <!-- Example settings for Data & Sync -->
-    <string name="pref_header_data_sync">Data &amp; sync</string>
+<string name="cantconnect">Unable to connect to the RooWifi card!\nHave you entered the correct IP address?</string>
+<string name="connected1">Connect to</string>
+<string name="connected2">successful!</string>
 
-    <string name="pref_title_sync_frequency">Sync frequency</string>
-    <string-array name="pref_sync_frequency_titles">
-        <item>15 minutes</item>
-        <item>30 minutes</item>
-        <item>1 hour</item>
-        <item>3 hours</item>
-        <item>6 hours</item>
-        <item>Never</item>
-    </string-array>
-    <string-array name="pref_sync_frequency_values">
-        <item>15</item>
-        <item>30</item>
-        <item>60</item>
-        <item>180</item>
-        <item>360</item>
-        <item>-1</item>
-    </string-array>
+<string name="error">Error</string>
 
-    <string-array name="list_preference_entries">
-        <item>Entry 1</item>
-        <item>Entry 2</item>
-        <item>Entry 3</item>
-    </string-array>
-
-    <string-array name="list_preference_entry_values">
-        <item>1</item>
-        <item>2</item>
-        <item>3</item>
-    </string-array>
-
-    <string-array name="multi_select_list_preference_default_value" />
-
-    <string name="pref_title_system_sync_settings">System sync settings</string>
-
-    <!-- Example settings for Notifications -->
-    <string name="pref_header_notifications">Notifications</string>
-
-    <string name="pref_title_new_message_notifications">New message notifications</string>
-
-    <string name="pref_title_ringtone">Ringtone</string>
-    <string name="pref_ringtone_silent">Silent</string>
-
-    <string name="pref_title_vibrate">Vibrate</string>
-
+<string name="pdialog_tryconnect">Attempting to connect</string>
+<string name="pdialog_wait">Please wait...</string>
 </resources>

@@ -13,7 +13,6 @@ public class SplashActivity extends AppCompatActivity {
 
         TinyDB tinyDB = new TinyDB(SplashActivity.this);
         tinyDB.putInt("actualisation", 0);
-        tinyDB.putInt("premierefois", 0);
 
         Thread timerThread = new Thread(){
             public void run(){

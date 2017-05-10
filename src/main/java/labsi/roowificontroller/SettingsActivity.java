@@ -26,10 +26,9 @@ public class SettingsActivity extends AppCompatActivity implements SeekBar.OnSee
         SeekBar sb = (SeekBar) findViewById(R.id.seekBar);
         TinyDB tinyDB = new TinyDB(this);
         int tick = tinyDB.getInt("eachtick");
-        tinyDB.putInt("premierefois", 0);
         sb.setProgress(tick);
         TextView tv = (TextView) findViewById(R.id.textView34) ;
-        tv.setText("Les données seront téléchargées toutes les " + tick + " secondes.");
+        tv.setText(getResources().getString(R.string.activity_settings_intervaldownloadinfo4)+ " " + tick + " " +getResources().getString(R.string.activity_settings_intervaldownloadinfo5));
         sb.setOnSeekBarChangeListener(SettingsActivity.this);
 
         TinyDB tinyDB1 = new TinyDB(SettingsActivity.this);
@@ -61,8 +60,9 @@ public class SettingsActivity extends AppCompatActivity implements SeekBar.OnSee
     public void modifip(View view) {
         final ProgressDialog pDialog;
         pDialog = new ProgressDialog(SettingsActivity.this);
-        pDialog.setTitle("Tentative de connexion");
-        pDialog.setMessage("Veuillez patienter...");
+        pDialog.setTitle(R.string.pdialog_tryconnect);
+        pDialog.setCancelable(false);
+        pDialog.setMessage(getResources().getString(R.string.pdialog_wait));
         pDialog.setIndeterminate(false);
         pDialog.show();
 
@@ -78,8 +78,8 @@ public class SettingsActivity extends AppCompatActivity implements SeekBar.OnSee
                         if (result == null) {
                             pDialog.dismiss();
                             new AlertDialog.Builder(SettingsActivity.this)
-                                    .setTitle("Erreur")
-                                    .setMessage("Impossible de se connecter à la carte RooWifi !\nAvez vous renseigné la bonne adresse IP ?")
+                                    .setTitle(R.string.error)
+                                    .setMessage(getResources().getString(R.string.cantconnect))
                                     .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
                                         public void onClick(DialogInterface dialog, int which) {
                                         }
@@ -93,14 +93,14 @@ public class SettingsActivity extends AppCompatActivity implements SeekBar.OnSee
                                 String text = editText.getText().toString();
                                 TinyDB tinyDB = new TinyDB(SettingsActivity.this);
                                 tinyDB.putString("ip", text);
-                                Toast.makeText(SettingsActivity.this, "Connexion à " + text + " réussie !", Toast.LENGTH_LONG).show();
+                                Toast.makeText(SettingsActivity.this, getResources().getString(R.string.connected1) + " "+ text + " " + getResources().getString(R.string.connected2), Toast.LENGTH_LONG).show();
                                 Intent intent = new Intent(SettingsActivity.this,SecondActivity.class);
                                 startActivity(intent);
                             } else {
                                 pDialog.dismiss();
                                 new AlertDialog.Builder(SettingsActivity.this)
-                                        .setTitle("Erreur")
-                                        .setMessage("Impossible de se connecter à la carte RooWifi !\nAvez vous renseigné la bonne adresse IP ?")
+                                        .setTitle(R.string.error)
+                                        .setMessage(getResources().getString(R.string.cantconnect))
                                         .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
                                             public void onClick(DialogInterface dialog, int which) {
                                             }
@@ -117,7 +117,7 @@ public class SettingsActivity extends AppCompatActivity implements SeekBar.OnSee
         TinyDB tinyDB = new TinyDB(this);
         tinyDB.putInt("downloadeachtick", 0);
         tinyDB.clear();
-        Toast.makeText(this, "Paramètres réinitialisées !", Toast.LENGTH_LONG).show();
+        Toast.makeText(this, getResources().getString(R.string.activity_settings_settinsreseted), Toast.LENGTH_LONG).show();
         Intent intent = new Intent(SettingsActivity.this,SplashActivity.class);
         startActivity(intent);
 
@@ -125,7 +125,7 @@ public class SettingsActivity extends AppCompatActivity implements SeekBar.OnSee
 
     public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
         TextView tv = (TextView) findViewById(R.id.textView34) ;
-        tv.setText("Les données seront téléchargées toutes les " + String.valueOf(progress) + " secondes.");
+        tv.setText(getResources().getString(R.string.activity_settings_intervaldownloadinfo4) +" " + String.valueOf(progress) +" " + getResources().getString(R.string.activity_settings_intervaldownloadinfo5));
         TinyDB tinyDB = new TinyDB(this);
         if (progress <1) {
             progress = progress + 1;
@@ -141,7 +141,7 @@ public class SettingsActivity extends AppCompatActivity implements SeekBar.OnSee
     public void onStopTrackingTouch(SeekBar seekBar) {
         TinyDB tinyDB = new TinyDB(this);
         int eachtick = tinyDB.getInt("eachtick");
-        Toast.makeText(this, "Les données seront téléchargées toutes les " + eachtick + " secondes !", Toast.LENGTH_LONG).show();
+        Toast.makeText(this, getResources().getString(R.string.activity_settings_intervaldownloadinfo4) +" " + eachtick +" " + getResources().getString(R.string.activity_settings_intervaldownloadinfo5), Toast.LENGTH_LONG).show();
     }
 
     public void checkbox_clicked(View v) {
@@ -166,13 +166,13 @@ public class SettingsActivity extends AppCompatActivity implements SeekBar.OnSee
     public void checkbox1_clicked(View v) {
         CheckBox checkbox =(CheckBox)findViewById(R.id.checkBox2);
         if(checkbox.isChecked()){
-            Toast.makeText(SettingsActivity.this, "Mode avancé activé !", Toast.LENGTH_LONG).show();
+            Toast.makeText(SettingsActivity.this, getResources().getString(R.string.activity_settings_advancedmodeenabled), Toast.LENGTH_LONG).show();
             TinyDB tinyDB = new TinyDB(this);
             tinyDB.putInt("modeavance", 1);
 
         }
         else {
-            Toast.makeText(SettingsActivity.this, "Mode avancé désactivé !", Toast.LENGTH_LONG).show();
+            Toast.makeText(SettingsActivity.this, getResources().getString(R.string.activity_settings_advancedmodedisabled), Toast.LENGTH_LONG).show();
             TinyDB tinyDB = new TinyDB(this);
             tinyDB.putInt("modeavance", 0);
         }

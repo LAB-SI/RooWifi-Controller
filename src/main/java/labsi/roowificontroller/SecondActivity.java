@@ -59,16 +59,16 @@ public class SecondActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_second);
 
-        TinyDB tinyDB = new TinyDB(this);
+        final TinyDB tinyDB = new TinyDB(this);
 
         TabHost host = (TabHost)findViewById(R.id.tabHost);
         host.setup();
 
-        TabHost.TabSpec spec = host.newTabSpec("Contrôle de la carte RooWifi");
+        TabHost.TabSpec spec = host.newTabSpec("");
         spec.setContent(R.id.tab1);
         spec.setIndicator("");
         host.addTab(spec);
-        spec = host.newTabSpec("Données des capteurs");
+        spec = host.newTabSpec("");
         spec.setContent(R.id.tab2);
         spec.setIndicator("");
         host.addTab(spec);
@@ -82,9 +82,11 @@ public class SecondActivity extends AppCompatActivity {
         if (premierefois ==1){
             new AlertDialog.Builder(SecondActivity.this)
                     .setTitle("Information")
-                    .setMessage("Pour plus d'informations à propos des capteurs, glissez vers la droite.")
+                    .setCancelable(false)
+                    .setMessage(getResources().getString(R.string.activity_second_information))
                     .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int which) {
+                            tinyDB.putInt("premierefois", 0);
                         }
                     })
                     .show();
@@ -93,8 +95,8 @@ public class SecondActivity extends AppCompatActivity {
         if(!ConnexionInternet.isConnectedInternet(SecondActivity.this))
         {
             new AlertDialog.Builder(this)
-                    .setTitle("Erreur")
-                    .setMessage("Vous n'êtes pas connecté à Internet !")
+                    .setTitle(R.string.error)
+                    .setMessage(getResources().getString(R.string.activity_second_nonetwork))
                     .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int which) {
                             Intent nintent;
@@ -138,14 +140,12 @@ public class SecondActivity extends AppCompatActivity {
             TextView textView5 = (TextView)findViewById(R.id.textView5);
             TextView textView61 = (TextView)findViewById(R.id.textView61);
             TextView textView19 = (TextView)findViewById(R.id.textView19);
-            TextView textView21 = (TextView)findViewById(R.id.textView21);
             textView12.setVisibility(View.GONE);
             textView1.setVisibility(View.GONE);
             textView2.setVisibility(View.GONE);
             textView5.setVisibility(View.GONE);
             textView61.setVisibility(View.GONE);
             textView19.setVisibility(View.GONE);
-            textView21.setVisibility(View.GONE);
         }
 
         textView1 = (TextView)findViewById(R.id.textView1);
@@ -154,7 +154,7 @@ public class SecondActivity extends AppCompatActivity {
         layout_joystick = (RelativeLayout)findViewById(R.id.layout_joystick);
         js = new JoyStickClass(getApplicationContext(), layout_joystick, R.drawable.image_button);
         js.setStickSize(150, 150);
-        js.setLayoutSize(750, 750);
+        js.setLayoutSize(800, 800);
         js.setLayoutAlpha(150);
         js.setStickAlpha(100);
         js.setOffset(90);
@@ -171,58 +171,46 @@ public class SecondActivity extends AppCompatActivity {
                     TinyDB tinyDB = new TinyDB(SecondActivity.this);
                     String IP = tinyDB.getString("ip");
                     WebView myWebView = (WebView) findViewById(R.id.webview);
-                    TextView textView = (TextView)findViewById(R.id.textView21);
 
                     int direction = js.get8Direction();
                     if(direction == JoyStickClass.STICK_UP) {
-                        textView5.setText("Direction : Haut");
+                        textView5.setText(R.string.activity_second_direction_front);
                         myWebView.loadUrl("http://" + IP + "/rwr.cgi?exec=a");
-                        textView.setText("http://" + IP + "/rwr.cgi?exec=a");
                     } else if(direction == JoyStickClass.STICK_UPRIGHT) {
-                        textView5.setText("Direction : Haut Droite");
+                        textView5.setText(R.string.activity_second_direction_frontright);
                         myWebView.loadUrl("http://" + IP + "/rwr.cgi?exec=a");
                         myWebView.loadUrl("http://" + IP + "/rwr.cgi?exec=f");
-                        textView.setText("http://" + IP + "/rwr.cgi?exec=a\n" + "http://" + IP + "/rwr.cgi?exec=f");
                     } else if(direction == JoyStickClass.STICK_RIGHT) {
-                        textView5.setText("Direction : Droite");
+                        textView5.setText(R.string.activity_second_direction_right);
                         myWebView.loadUrl("http://" + IP + "/rwr.cgi?exec=f");
-                        textView.setText("http://" + IP + "/rwr.cgi?exec=f");
                     } else if(direction == JoyStickClass.STICK_DOWNRIGHT) {
-                        textView5.setText("Direction : Bas Droite");
+                        textView5.setText(R.string.activity_second_direction_rearright);
                         myWebView.loadUrl("http://" + IP + "/rwr.cgi?exec=l");
                         myWebView.loadUrl("http://" + IP + "/rwr.cgi?exec=f");
-                        textView.setText("http://" + IP + "/rwr.cgi?exec=l\n" + "http://" + IP + "/rwr.cgi?exec=f");
                     } else if(direction == JoyStickClass.STICK_DOWN) {
-                        textView5.setText("Direction : Bas");
+                        textView5.setText(R.string.activity_second_direction_rear);
                         myWebView.loadUrl("http://" + IP + "/rwr.cgi?exec=l");
-                        textView.setText("http://" + IP + "/rwr.cgi?exec=l");
                     } else if(direction == JoyStickClass.STICK_DOWNLEFT) {
-                        textView5.setText("Direction : Bas Gauche");
+                        textView5.setText(R.string.activity_second_direction_rearleft);
                         myWebView.loadUrl("http://" + IP + "/rwr.cgi?exec=l");
                         myWebView.loadUrl("http://" + IP + "/rwr.cgi?exec=c");
-                        textView.setText("http://" + IP + "/rwr.cgi?exec=l\n" + "http://" + IP + "/rwr.cgi?exec=c");
                     } else if(direction == JoyStickClass.STICK_LEFT) {
-                        textView5.setText("Direction : Gauche");
+                        textView5.setText(R.string.activity_second_direction_left);
                         myWebView.loadUrl("http://" + IP + "/rwr.cgi?exec=c");
-                        textView.setText("http://" + IP + "/rwr.cgi?exec=c");
                     } else if(direction == JoyStickClass.STICK_UPLEFT) {
-                        textView5.setText("Direction : Haut Gauche");
+                        textView5.setText(R.string.activity_second_direction_frontleft);
                         myWebView.loadUrl("http://" + IP + "/rwr.cgi?exec=a");
                         myWebView.loadUrl("http://" + IP + "/rwr.cgi?exec=c");
-                        textView.setText("http://" + IP + "/rwr.cgi?exec=a\n"+"http://" + IP + "/rwr.cgi?exec=c");
                     } else if(direction == JoyStickClass.STICK_NONE) {
-                        textView5.setText("Direction : Centre");
+                        textView5.setText(R.string.activity_second_direction_center);
                         myWebView.loadUrl(null);
-                        textView.setText("Requête :");
                     }
                 } else if(arg1.getAction() == MotionEvent.ACTION_UP) {
                     textView1.setText("X : 0");
                     textView2.setText("Y : 0");
      //               textView3.setText("Angle :");
      //               textView4.setText("Distance :");
-                    textView5.setText("Direction : Centre");
-                    TextView textView = (TextView)findViewById(R.id.textView21);
-                    textView.setText("Requête :");
+                    textView5.setText(R.string.activity_second_direction_center);
                 }
                 return true;
             }
@@ -243,8 +231,8 @@ public class SecondActivity extends AppCompatActivity {
                         try {
                             if (result.equals("0")) {
                                 new AlertDialog.Builder(SecondActivity.this)
-                                        .setTitle("Erreur")
-                                        .setMessage("Une erreur s'est produite mais la commande a bien été envoyée !" + "\n" + "Verifiez que votre aspirateur Roomba est bien allumé et la carte RooWifi bien branchée.")
+                                        .setTitle(R.string.error)
+                                        .setMessage(getResources().getString(R.string.activity_second_failbutconnected))
                                         .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
                                             public void onClick(DialogInterface dialog, int which) {
                                             }
@@ -253,13 +241,11 @@ public class SecondActivity extends AppCompatActivity {
                             }
                             else if (result.equals("1")) {
                                 myWebView.loadUrl("http://" + IP + "/rwr.cgi?exec=h");
-                                TextView textView = (TextView)findViewById(R.id.textView21);
-                                textView.setText("http://" + IP + "/rwr.cgi?exec=h");
                             }
                             else {
                                 new AlertDialog.Builder(SecondActivity.this)
-                                        .setTitle("Erreur")
-                                        .setMessage("Erreur inconnue." + "\n" + "Resultat : '" + result +"'")
+                                        .setTitle(R.string.error)
+                                        .setMessage(getResources().getString(R.string.activity_second_unknownerror) + "\n" + getResources().getString(R.string.activity_second_result) + result +"'")
                                         .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
                                             public void onClick(DialogInterface dialog, int which) {
                                             }
@@ -269,8 +255,8 @@ public class SecondActivity extends AppCompatActivity {
                         }
                         catch (Exception e1){
                             new AlertDialog.Builder(SecondActivity.this)
-                                    .setTitle("Erreur")
-                                    .setMessage("Impossible de se connecter à la carte RooWifi.")
+                                    .setTitle(R.string.error)
+                                    .setMessage(getResources().getString(R.string.activity_second_cantconnect))
                                     .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
                                         public void onClick(DialogInterface dialog, int which) {
                                         }
@@ -295,8 +281,8 @@ public class SecondActivity extends AppCompatActivity {
                         try {
                             if (result.equals("0")) {
                                 new AlertDialog.Builder(SecondActivity.this)
-                                        .setTitle("Erreur")
-                                        .setMessage("Une erreur s'est produite mais la commande a bien été envoyée !" + "\n" + "Verifiez que votre aspirateur Roomba est bien allumé et la carte RooWifi bien branchée.")
+                                        .setTitle(R.string.error)
+                                        .setMessage(getResources().getString(R.string.activity_second_failbutconnected))
                                         .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
                                             public void onClick(DialogInterface dialog, int which) {
                                             }
@@ -305,13 +291,11 @@ public class SecondActivity extends AppCompatActivity {
                             }
                             else if (result.equals("1")) {
                                 myWebView.loadUrl("http://" + IP + "/roomba.cgi?button=CLEAN");
-                                TextView textView = (TextView)findViewById(R.id.textView21);
-                                textView.setText("http://" + IP + "/roomba.cgi?button=CLEAN");
                             }
                             else {
                                 new AlertDialog.Builder(SecondActivity.this)
-                                        .setTitle("Erreur")
-                                        .setMessage("Erreur inconnue." + "\n" + "Resultat : '" + result +"'")
+                                        .setTitle(R.string.error)
+                                        .setMessage(getResources().getString(R.string.activity_second_unknownerror) + "\n" + getResources().getString(R.string.activity_second_result) + result +"'")
                                         .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
                                             public void onClick(DialogInterface dialog, int which) {
                                             }
@@ -321,8 +305,8 @@ public class SecondActivity extends AppCompatActivity {
                         }
                         catch (Exception e1){
                             new AlertDialog.Builder(SecondActivity.this)
-                                    .setTitle("Erreur")
-                                    .setMessage("Impossible de se connecter à la carte RooWifi.")
+                                    .setTitle(R.string.error)
+                                    .setMessage(getResources().getString(R.string.activity_second_cantconnect))
                                     .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
                                         public void onClick(DialogInterface dialog, int which) {
                                         }
@@ -347,8 +331,8 @@ public class SecondActivity extends AppCompatActivity {
                         try {
                             if (result.equals("0")) {
                                 new AlertDialog.Builder(SecondActivity.this)
-                                        .setTitle("Erreur")
-                                        .setMessage("Une erreur s'est produite mais la commande a bien été envoyée !" + "\n" + "Verifiez que votre aspirateur Roomba est bien allumé et la carte RooWifi bien branchée.")
+                                        .setTitle(R.string.error)
+                                        .setMessage(getResources().getString(R.string.activity_second_failbutconnected))
                                         .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
                                             public void onClick(DialogInterface dialog, int which) {
                                             }
@@ -357,13 +341,11 @@ public class SecondActivity extends AppCompatActivity {
                             }
                             else if (result.equals("1")) {
                                 myWebView.loadUrl("http://" + IP + "/roomba.cgi?button=DOCK");
-                                TextView textView = (TextView)findViewById(R.id.textView21);
-                                textView.setText("http://" + IP + "/roomba.cgi?button=DOCK");
                             }
                             else {
                                 new AlertDialog.Builder(SecondActivity.this)
-                                        .setTitle("Erreur")
-                                        .setMessage("Erreur inconnue." + "\n" + "Resultat : '" + result +"'")
+                                        .setTitle(R.string.error)
+                                        .setMessage(getResources().getString(R.string.activity_second_unknownerror) + "\n" + getResources().getString(R.string.activity_second_result) + result +"'")
                                         .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
                                             public void onClick(DialogInterface dialog, int which) {
                                             }
@@ -373,8 +355,8 @@ public class SecondActivity extends AppCompatActivity {
                         }
                         catch (Exception e1){
                             new AlertDialog.Builder(SecondActivity.this)
-                                    .setTitle("Erreur")
-                                    .setMessage("Impossible de se connecter à la carte RooWifi.")
+                                    .setTitle(R.string.error)
+                                    .setMessage(getResources().getString(R.string.activity_second_cantconnect))
                                     .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
                                         public void onClick(DialogInterface dialog, int which) {
                                         }
@@ -399,8 +381,8 @@ public class SecondActivity extends AppCompatActivity {
                         try {
                             if (result.equals("0")) {
                                 new AlertDialog.Builder(SecondActivity.this)
-                                        .setTitle("Erreur")
-                                        .setMessage("Une erreur s'est produite mais la commande a bien été envoyée !" + "\n" + "Verifiez que votre aspirateur Roomba est bien allumé et la carte RooWifi bien branchée.")
+                                        .setTitle(R.string.error)
+                                        .setMessage(getResources().getString(R.string.activity_second_failbutconnected))
                                         .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
                                             public void onClick(DialogInterface dialog, int which) {
                                             }
@@ -409,13 +391,11 @@ public class SecondActivity extends AppCompatActivity {
                             }
                             else if (result.equals("1")) {
                                 myWebView.loadUrl("http://" + IP + "/roomba.cgi?button=SPOT");
-                                TextView textView = (TextView)findViewById(R.id.textView21);
-                                textView.setText("http://" + IP + "/roomba.cgi?button=SPOT");
                             }
                             else {
                                 new AlertDialog.Builder(SecondActivity.this)
-                                        .setTitle("Erreur")
-                                        .setMessage("Erreur inconnue." + "\n" + "Resultat : '" + result +"'")
+                                        .setTitle(R.string.error)
+                                        .setMessage(getResources().getString(R.string.activity_second_unknownerror) + "\n" + getResources().getString(R.string.activity_second_result) + result +"'")
                                         .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
                                             public void onClick(DialogInterface dialog, int which) {
                                             }
@@ -425,8 +405,8 @@ public class SecondActivity extends AppCompatActivity {
                         }
                         catch (Exception e1){
                             new AlertDialog.Builder(SecondActivity.this)
-                                    .setTitle("Erreur")
-                                    .setMessage("Impossible de se connecter à la carte RooWifi.")
+                                    .setTitle(R.string.error)
+                                    .setMessage(getResources().getString(R.string.activity_second_cantconnect))
                                     .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
                                         public void onClick(DialogInterface dialog, int which) {
                                         }
@@ -476,8 +456,8 @@ public class SecondActivity extends AppCompatActivity {
 
             } catch (Exception e) {
                 new AlertDialog.Builder(SecondActivity.this)
-                        .setTitle("Erreur")
-                        .setMessage("Erreur = " + e)
+                        .setTitle(R.string.error)
+                        .setMessage(getResources().getString(R.string.error) + " = " + e)
                         .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int which) {
                             }
@@ -600,50 +580,28 @@ public class SecondActivity extends AppCompatActivity {
                                                                                                 textView55.setText("Capacity : " +getNode("value", eElement19));
 
                                                                                                 TextView textView14 = (TextView) findViewById(R.id.textView14);
-                                                                                                textView14.setText("Temperature : " +getNode("value", eElement17)+"°C" );
+                                                                                                textView14.setText(getResources().getString(R.string.activity_second_temperature) + " " +getNode("value", eElement17)+"°C" );
                                                                                                 TextView textView20 = (TextView) findViewById(R.id.textView20);
                                                                                                 String cap = getNode("value", eElement19);
                                                                                                 String cha = getNode("value", eElement18);
 
-                                                                                                if (cha.length() == 6){
-                                                                                                    String cap1 = cap.substring(1, cap.length()-1);
-                                                                                                    String cha1 = cha.substring(1, cap.length()-1);
+                                                                                                int Capacity = Integer.parseInt(cap);
+                                                                                                int Charge = Integer.parseInt(cha);
+                                                                                                int a = Charge * 100;
+                                                                                                int percent = a/Capacity;
+                                                                                                textView20.setText(getResources().getString(R.string.activity_second_batterylevel)+" "+percent+" %");
 
-                                                                                                    int Capacity = Integer.parseInt(cap1);
-                                                                                                    int Charge = Integer.parseInt(cha1);
-                                                                                                    int a = Charge * 100;
-                                                                                                    int temperature = a/Capacity;
-                                                                                                    textView20.setText("Niveau de batterie : " +temperature+" %" );
+                                                                                                int chargingstate = Integer.parseInt(getNode("value", eElement14));
+                                                                                                TextView textView7 = (TextView) findViewById(R.id.textView7);
+                                                                                                if (chargingstate == 2){
+
+                                                                                                    textView7.setText(getResources().getString(R.string.activity_second_chargingstate2));
                                                                                                 }
-                                                                                                else if (cha.length() == 5){
-                                                                                                    String cap1 = cap.substring(1, cap.length()-1);
-                                                                                                    String cha1 = cha.substring(1, cap.length()-2);
-
-                                                                                                    int Capacity = Integer.parseInt(cap1);
-                                                                                                    int Charge = Integer.parseInt(cha1);
-                                                                                                    int a = Charge * 100;
-                                                                                                    int temperature = a/Capacity;
-                                                                                                    textView20.setText("Niveau de batterie : " +temperature+" %" );
+                                                                                                else if (chargingstate == 4){
+                                                                                                    textView7.setText(getResources().getString(R.string.activity_second_chargingstate4));
                                                                                                 }
-                                                                                                else if (cha.length() == 4) {
-                                                                                                    String cap1 = cap.substring(1, cap.length()-1);
-                                                                                                    String cha1 = cha.substring(1, cap.length()-3);
-
-                                                                                                    int Capacity = Integer.parseInt(cap1);
-                                                                                                    int Charge = Integer.parseInt(cha1);
-                                                                                                    int a = Charge * 100;
-                                                                                                    int temperature = a/Capacity;
-                                                                                                    textView20.setText("Niveau de batterie : " +temperature+" %" );
-                                                                                                }
-                                                                                                else if (cha.length() == 4) {
-                                                                                                    String cap1 = cap.substring(1, cap.length()-1);
-                                                                                                    String cha1 = cha.substring(1, cap.length()-4);
-
-                                                                                                    int Capacity = Integer.parseInt(cap1);
-                                                                                                    int Charge = Integer.parseInt(cha1);
-                                                                                                    int a = Charge * 100;
-                                                                                                    int temperature = a/Capacity;
-                                                                                                    textView20.setText("Niveau de batterie : " +temperature+" %" );
+                                                                                                else {
+                                                                                                    textView7.setText(getResources().getString(R.string.activity_second_chargingstateunknown));
                                                                                                 }
 
                                                                                                 TinyDB tinyDB = new TinyDB(SecondActivity.this);
@@ -651,7 +609,7 @@ public class SecondActivity extends AppCompatActivity {
                                                                                                 tinyDB.putInt("actualisation", actualisation + 1);
                                                                                                 int nbactualisation = tinyDB.getInt("actualisation");
                                                                                                 TextView textView = (TextView)findViewById(R.id.textView19);
-                                                                                                textView.setText("Nombre d'actualisation des capteurs : " + nbactualisation);
+                                                                                                textView.setText(getResources().getString(R.string.activity_second_nbsensorupdate) + " " + nbactualisation);
                                                                                             }
                                                                                         }
 
@@ -680,8 +638,17 @@ public class SecondActivity extends AppCompatActivity {
                 startActivity(intent);
                 return true;
             case R.id.action_about:
-                intent = new Intent(this, AboutActivity.class);
-                startActivity(intent);
+                View aboutview = View.inflate(this, R.layout.view_about, null);
+
+                AlertDialog.Builder builder = new AlertDialog.Builder(this);
+                builder.setTitle("RooWifi Controller v"+ version.version);
+                builder.setIcon(R.drawable.logo);
+                builder.setView(aboutview)
+                        .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                            }
+                        });
+                builder.show();
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
@@ -709,13 +676,13 @@ public class SecondActivity extends AppCompatActivity {
                     {
                         TabHost host = (TabHost)findViewById(R.id.tabHost);
                         host.setCurrentTab(0);
-                        setTitle("Contrôle de la carte RooWifi");
+                        setTitle(R.string.activity_second_title1);
                     }
                     else
                     {
                         TabHost host = (TabHost)findViewById(R.id.tabHost);
                         host.setCurrentTab(1);
-                        setTitle("Données des capteurs");
+                        setTitle(R.string.activity_second_title2);
                     }
                 }
                 break;

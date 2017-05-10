@@ -7,12 +7,22 @@
     tools:context="labsi.roowificontroller.SplashActivity">
 
 
-    <ImageView
-        android:id="@+id/imageView2"
+    <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        app:srcCompat="@drawable/logo"
+        android:gravity="center_vertical|center_horizontal|center"
+        android:orientation="horizontal"
         tools:layout_editor_absoluteX="8dp"
-        tools:layout_editor_absoluteY="8dp" />
+        tools:layout_editor_absoluteY="8dp">
+
+        <ImageView
+            android:id="@+id/imageView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            app:srcCompat="@drawable/logo"
+            tools:layout_editor_absoluteX="8dp"
+            tools:layout_editor_absoluteY="8dp" />
+    </LinearLayout>
 
 </android.support.constraint.ConstraintLayout>

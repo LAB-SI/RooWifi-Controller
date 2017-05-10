@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="activity_main_title">Connexion à la carte RooWifi</string>
+    <string name="activity_main_button">Se connecter</string>
+    <string name="activity_main_forgotip">Vous avez oublié de renseigner l\'adresse IP !</string>
+
+    <string name="activity_second_information">Pour plus d\'informations à propos des capteurs, glissez vers la droite.</string>
+    <string name="activity_second_nonetwork">Vous n\'êtes connecté à aucun réseau !</string>
+    <string name="activity_second_direction_front">Direction : Avant</string>
+    <string name="activity_second_direction_frontright">Direction: Avant Droite</string>
+    <string name="activity_second_direction_right">Direction: Droite</string>
+    <string name="activity_second_direction_rearright">Direction: Arrière Droite</string>
+    <string name="activity_second_direction_rear">Direction: Arrière</string>
+    <string name="activity_second_direction_rearleft">Direction: Arrière Gauche</string>
+    <string name="activity_second_direction_left">Direction: Gauche</string>
+    <string name="activity_second_direction_frontleft">Direction: Avant Gauche</string>
+    <string name="activity_second_direction_center">Direction: Centre</string>
+    <string name="activity_second_request">Requête :</string>
+    <string name="activity_second_failbutconnected">Une erreur s\'est produite mais la commande a bien été envoyée !\nVerifiez que votre aspirateur Roomba est bien allumé et la carte RooWifi bien branchée.</string>
+    <string name="activity_second_clean">Nettoyer</string>
+    <string name="activity_second_dock">Dock</string>
+    <string name="activity_second_spot">Spot</string>
+    <string name="activity_second_manual">Mode manuel</string>
+    <string name="activity_second_title1">Contrôle de la carte RooWifi</string>
+    <string name="activity_second_title2">Données des capteurs</string>
+    <string name="activity_second_unknownerror">Erreur inconnue.</string>
+    <string name="activity_second_result">Resultat : \'</string>
+    <string name="activity_second_cantconnect">Impossible de se connecter à la carte RooWifi.</string>
+    <string name="activity_second_batterylevel">Niveau de batterie :</string>
+    <string name="activity_second_nbsensorupdate">Nombre d\'actualisation des capteurs :</string>
+    <string name="activity_second_network">Réseau :</string>
+    <string name="activity_second_infos">Informations Roomba :</string>
+    <string name="activity_second_temperature">Temperature :</string>
+    <string name="activity_second_chargingstate2">État de chargement : En charge</string>
+    <string name="activity_second_chargingstate4">État de chargement : Déchargement</string>
+    <string name="activity_second_chargingstateunknown">État de chargement : Inconnu</string>
+    <string name="activity_second_loadingdata">Chargement des données...</string>
+    <string name="activity_second_buttonresetcoo">Reset Wifi</string>
+
+    <string name="activity_second_menusettings">Paramètres</string>
+    <string name="activity_second_menuabout">À propos</string>
+
+    <string name="activity_settings_title">Paramètres</string>
+    <string name="activity_settings_modifip">Modifier adresse IP</string>
+    <string name="activity_settings_buttonedit">Modifier</string>
+    <string name="activity_settings_intervaldownload">Choisir interval de téléchargement</string>
+    <string name="activity_settings_checkboxintervaldownload">Activer le téléchargement systématique des données</string>
+    <string name="activity_settings_intervaldownloadinfo1">Le fichier roomba.xml (contenant les données des capteurs) s\'actualise toutes les 0.5 secondes.</string>
+    <string name="activity_settings_intervaldownloadinfo2">Selon quel interval de temps voulez vous que ces données soient téléchargées sur l\'application RooWifi Controller ?</string>
+    <string name="activity_settings_intervaldownloadinfo3">Les données seront téléchargées toutes les 00 secondes.</string>
+    <string name="activity_settings_resetsettings">Réinitialiser les paramètres</string>
+    <string name="activity_settings_buttonreset">Réinitialiser</string>
+    <string name="activity_settings_advancedmode">Mode avancé</string>
+    <string name="activity_settings_checkboxadvancedmode">Activer le mode avancé</string>
+    <string name="activity_settings_advancedmodeinfo">Le mode avancé permet d\'avoir accès à certaines informations supplémentaires.</string>
+    <string name="activity_settings_intervaldownloadinfo4">Les données seront téléchargées toutes les</string>
+    <string name="activity_settings_intervaldownloadinfo5">secondes.</string>
+    <string name="activity_settings_settinsreseted">Paramètres réinitialisés !</string>
+    <string name="activity_settings_advancedmodeenabled">Mode avancé activé !</string>
+    <string name="activity_settings_advancedmodedisabled">Mode avancé désactivé !</string>
+
+    <string name="view_about_infos">RooWifi Controller est une application qui va vous permettre de contrôler votre carte RooWifi ! Vous n\'avez qu\'à entrer l\'IP de celle-ci et le tour est joué !</string>
+    <string name="view_about_credits">Crédits :\n- Valentin Charbonnier (valentinbreiz.github.io)\n- Ake Exorcist (JoyStick)\n- TinyDB (gestion données sauvegardées)</string>
+    <string name="view_about_creator">Créé au LAB SI du lycée Saint-Éxupery à Parentis-en-Born.</string>
+
+    <string name="cantconnect">Impossible de se connecter à la carte RooWifi !\nAvez vous renseigné la bonne adresse IP ?</string>
+    <string name="connected1">Connexion à</string>
+    <string name="connected2">réussie !</string>
+
+    <string name="error">Erreur</string>
+
+    <string name="pdialog_tryconnect">Tentative de connexion</string>
+    <string name="pdialog_wait">Veuillez patienter...</string>
+</resources>

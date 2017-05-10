@@ -27,7 +27,7 @@
                 android:id="@+id/textView28"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Modifier adresse IP"
+                android:text="@string/activity_settings_modifip"
                 android:textColor="#444444"
                 android:textSize="24sp" />
 
@@ -47,7 +47,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:onClick="modifip"
-                android:text="Modifier"
+                android:text="@string/activity_settings_buttonedit"
                 tools:layout_editor_absoluteX="8dp"
                 tools:layout_editor_absoluteY="136dp" />
 
@@ -61,7 +61,7 @@
                 android:id="@+id/textView30"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Choisir interval de téléchargement"
+                android:text="@string/activity_settings_intervaldownload"
                 android:textColor="#444444"
                 android:textSize="24sp" />
 
@@ -71,19 +71,19 @@
                 android:layout_height="wrap_content"
                 android:checked="true"
                 android:onClick="checkbox_clicked"
-                android:text="Activer le téléchargement systématique des données" />
+                android:text="@string/activity_settings_checkboxintervaldownload" />
 
             <TextView
                 android:id="@+id/textView32"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Le fichier roomba.xml (contenant les données des capteurs) s'actualise toutes les 0.5 secondes." />
+                android:text="@string/activity_settings_intervaldownloadinfo1" />
 
             <TextView
                 android:id="@+id/textView33"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Selon quel interval de temps voulez vous que ces données soient téléchargées sur l'application RooWifi Controller ?" />
+                android:text="@string/activity_settings_intervaldownloadinfo2" />
 
             <SeekBar
                 android:id="@+id/seekBar"
@@ -95,7 +95,7 @@
                 android:id="@+id/textView34"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Les données seront téléchargées toutes les 00 secondes." />
+                android:text="@string/activity_settings_intervaldownloadinfo3" />
 
             <TextView
                 android:id="@+id/textView31"
@@ -107,7 +107,7 @@
                 android:id="@+id/textView27"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Réinitialiser les paramètres"
+                android:text="@string/activity_settings_resetsettings"
                 android:textColor="#444444"
                 android:textSize="24sp" />
 
@@ -116,7 +116,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:onClick="reinitialiser"
-                android:text="Réinitialiser"
+                android:text="@string/activity_settings_buttonreset"
                 tools:layout_editor_absoluteX="8dp"
                 tools:layout_editor_absoluteY="136dp" />
 
@@ -130,7 +130,7 @@
                 android:id="@+id/textView56"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Mode avancé"
+                android:text="@string/activity_settings_advancedmode"
                 android:textColor="#444444"
                 android:textSize="24sp" />
 
@@ -138,14 +138,14 @@
                 android:id="@+id/checkBox2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Activer le mode avancé"
+                android:text="@string/activity_settings_checkboxadvancedmode"
                 android:onClick="checkbox1_clicked"/>
 
             <TextView
                 android:id="@+id/textView59"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Le mode avancé permet d'avoir accès a certaines informations supplémentaires." />
+                android:text="@string/activity_settings_advancedmodeinfo" />
 
         </LinearLayout>
 

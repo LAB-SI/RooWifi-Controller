@@ -6,11 +6,15 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.app.AlertDialog;
 import android.widget.Toast;
 import com.koushikdutta.async.future.FutureCallback;
 import com.koushikdutta.ion.Ion;
+import com.koushikdutta.ion.builder.Builders;
+
+import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -24,8 +28,8 @@ public class MainActivity extends AppCompatActivity {
         final EditText ip = (EditText) findViewById(R.id.editText);
         if (ip.getText().toString().equals("")) {
             new AlertDialog.Builder(this)
-                    .setTitle("Erreur")
-                    .setMessage("Vous avez oublié de renseigner l'adresse IP !")
+                    .setTitle(R.string.error)
+                    .setMessage(R.string.activity_main_forgotip)
                     .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int which) {
                         }
@@ -35,8 +39,9 @@ public class MainActivity extends AppCompatActivity {
         else {
             final ProgressDialog pDialog;
             pDialog = new ProgressDialog(MainActivity.this);
-            pDialog.setTitle("Tentative de connexion");
-            pDialog.setMessage("Veuillez patienter...");
+            pDialog.setTitle(R.string.pdialog_tryconnect);
+            pDialog.setCancelable(false);
+            pDialog.setMessage(getResources().getString(R.string.pdialog_wait));
             pDialog.setIndeterminate(false);
             pDialog.show();
 
@@ -50,8 +55,8 @@ public class MainActivity extends AppCompatActivity {
                     if (result == null) {
                         pDialog.dismiss();
                         new AlertDialog.Builder(MainActivity.this)
-                                .setTitle("Erreur")
-                                .setMessage("Impossible de se connecter à la carte RooWifi !\nAvez vous renseigné la bonne adresse IP ?")
+                                .setTitle(R.string.error)
+                                .setMessage(getResources().getString(R.string.cantconnect))
                                 .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
                                     public void onClick(DialogInterface dialog, int which) {
                                     }
@@ -66,15 +71,15 @@ public class MainActivity extends AppCompatActivity {
                             tinyDB.putInt("premierefois", 1);
                             tinyDB.putInt("actualisation", 0);
                             tinyDB.putString("ip", ip.getText().toString());
-                            Toast.makeText(MainActivity.this, "Connexion à " + ip.getText().toString() + " réussie !", Toast.LENGTH_LONG).show();
+                            Toast.makeText(MainActivity.this, getResources().getString(R.string.connected1) + " "+ ip.getText().toString() + " " + getResources().getString(R.string.connected2), Toast.LENGTH_LONG).show();
                             Intent intent;
                             intent = new Intent(MainActivity.this, SecondActivity.class);
                             startActivity(intent);
                         } else {
                             pDialog.dismiss();
                             new AlertDialog.Builder(MainActivity.this)
-                                    .setTitle("Erreur")
-                                    .setMessage("Impossible de se connecter à la carte RooWifi !\nAvez vous renseigné la bonne adresse IP ?")
+                                    .setTitle(R.string.error)
+                                    .setMessage(getResources().getString(R.string.cantconnect))
                                     .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
                                         public void onClick(DialogInterface dialog, int which) {
                                         }
