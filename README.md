@@ -15,4 +15,4 @@ Vous pouvez accéder au Wiki ici: https://github.com/LAB-SI/RooWifi-Controller/w
 ## Download
 You can download the app in the Google Play Store here: Link soon... ;)
 
-Or you can go in the release tab: https://github.com/valentinbreiz/RooWifi-Controller/releases
+Or you can go in the release tab: https://github.com/LAB-SI/RooWifi-Controller/releases
