@@ -67,6 +67,7 @@
 <string name="view_about_creator">Created at the LAB SI of the Lycée Saint-Éxupery in Parentis-en-Born.</string>
 
 <string name="cantconnect">Unable to connect to the RooWifi card!\nHave you entered the correct IP address?</string>
+    <string name="cantconnect1">Unable to connect to the RooWifi card!\nWould you like to edit the IP address?</string>
 <string name="connected1">Connect to</string>
 <string name="connected2">successful!</string>
 
