@@ -14,7 +14,6 @@ import android.webkit.WebView;
 import android.widget.RelativeLayout;
 import android.widget.TabHost;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.koushikdutta.async.future.FutureCallback;
 import com.koushikdutta.ion.Ion;
@@ -209,7 +208,6 @@ public class SecondActivity extends AppCompatActivity {
                         else {
                             if (result.startsWith("<response>")) {
                                 pDialog.dismiss();
-                                Toast.makeText(SecondActivity.this, getResources().getString(R.string.connected1) + " "+ IP + " " + getResources().getString(R.string.connected2), Toast.LENGTH_LONG).show();
                                 Init();
                             } else {
                                 pDialog.dismiss();

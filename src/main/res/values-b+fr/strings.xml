@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
     <string name="activity_main_title">Connexion à la carte RooWifi</string>
     <string name="activity_main_button">Se connecter</string>
     <string name="activity_main_forgotip">Vous avez oublié de renseigner l\'adresse IP !</string>
@@ -72,4 +73,5 @@
 
     <string name="pdialog_tryconnect">Tentative de connexion</string>
     <string name="pdialog_wait">Veuillez patienter...</string>
+	
 </resources>
