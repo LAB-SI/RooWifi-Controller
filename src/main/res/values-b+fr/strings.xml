@@ -6,7 +6,7 @@
     <string name="activity_main_forgotip">Vous avez oublié de renseigner l\'adresse IP !</string>
 
     <string name="activity_second_information">Pour plus d\'informations à propos des capteurs, glissez vers la droite.</string>
-    <string name="activity_second_nonetwork">Vous n\'êtes connecté à aucun réseau !</string>
+    <string name="activity_second_nonetwork">Vous n\'êtes connecté à aucun réseau !\nUne connexion WiFi est nécessaire.</string>
     <string name="activity_second_direction_front">Direction : Avant</string>
     <string name="activity_second_direction_frontright">Direction: Avant Droite</string>
     <string name="activity_second_direction_right">Direction: Droite</string>

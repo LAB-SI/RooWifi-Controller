@@ -198,9 +198,17 @@ public class SecondActivity extends AppCompatActivity {
                             pDialog.dismiss();
                             new AlertDialog.Builder(SecondActivity.this)
                                     .setTitle(R.string.error)
-                                    .setMessage(getResources().getString(R.string.cantconnect))
+                                    .setCancelable(false)
+                                    .setMessage(getResources().getString(R.string.cantconnect1))
                                     .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
                                         public void onClick(DialogInterface dialog, int which) {
+                                            Intent intent = new Intent(SecondActivity.this,MainActivity.class);
+                                            startActivity(intent);
+                                        }
+                                    })
+                                    .setNegativeButton(android.R.string.no, new DialogInterface.OnClickListener() {
+                                        public void onClick(DialogInterface dialog, int which) {
+                                            System.exit(0);
                                         }
                                     })
                                     .show();
@@ -629,8 +637,12 @@ public class SecondActivity extends AppCompatActivity {
                                                                                                 int Capacity = Integer.parseInt(cap);
                                                                                                 int Charge = Integer.parseInt(cha);
                                                                                                 int a = Charge * 100;
-                                                                                                int percent = a/Capacity;
-                                                                                                textView20.setText(getResources().getString(R.string.activity_second_batterylevel)+" "+percent+" %");
+                                                                                                if (Capacity == 0){
+                                                                                                }
+                                                                                                else {
+                                                                                                    int percent = a/Capacity;
+                                                                                                    textView20.setText(getResources().getString(R.string.activity_second_batterylevel)+" "+percent+" %");
+                                                                                                }
 
                                                                                                 int chargingstate = Integer.parseInt(getNode("value", eElement14));
                                                                                                 TextView textView7 = (TextView) findViewById(R.id.textView7);

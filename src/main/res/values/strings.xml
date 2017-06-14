@@ -8,7 +8,7 @@
 <string name="activity_main_forgotip">You forgot to enter the IP address!</string>
 
 <string name="activity_second_information">For more information about sensors, slide towards right.</string>
-<string name="activity_second_nonetwork">You are not connected to any network!</string>
+<string name="activity_second_nonetwork">You are not connected to any network!\nA WIFI connection is necessary.</string>
 <string name="activity_second_direction_front">Direction: Front</string>
 <string name="activity_second_direction_frontright">Direction: Front Right</string>
 <string name="activity_second_direction_right">Direction: Right</string>

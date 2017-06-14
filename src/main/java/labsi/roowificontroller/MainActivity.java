@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.app.AlertDialog;
+import android.widget.TextView;
 import android.widget.Toast;
 import com.koushikdutta.async.future.FutureCallback;
 import com.koushikdutta.ion.Ion;
@@ -18,6 +19,16 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        EditText editText = (EditText)findViewById(R.id.editText);
+
+        TinyDB tinyDB = new TinyDB(MainActivity.this);
+        String IP = tinyDB.getString("ip");
+        if (IP == null){
+        }
+        else {
+            editText.setText(IP);
+        }
     }
 
     public void Connexion(View view) {
