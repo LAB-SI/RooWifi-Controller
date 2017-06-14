@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="link"><a href="https://github.com/valentinbreiz/RooWifi-Controller">Page GitHub du projet</a></string>
-    <string name="menu_settings">Settings</string>
+
+<string name="link"><a href="https://github.com/valentinbreiz/RooWifi-Controller">Page GitHub du projet</a></string>
+<string name="menu_settings">Settings</string>
 <string name="activity_main_title">Connect to the RooWifi card</string>
 <string name="activity_main_button">Connect</string>
 <string name="activity_main_forgotip">You forgot to enter the IP address!</string>
 
 <string name="activity_second_information">For more information about sensors, slide towards right.</string>
-<string name="activity_second_nonetwork">You are not connected to any network!</string>
+<string name="activity_second_nonetwork">You are not connected to any network!\nA WIFI connection is necessary.</string>
 <string name="activity_second_direction_front">Direction: Front</string>
 <string name="activity_second_direction_frontright">Direction: Front Right</string>
 <string name="activity_second_direction_right">Direction: Right</string>
@@ -34,11 +35,11 @@
 <string name="activity_second_infos">Roomba Informations:</string>
 <string name="activity_second_temperature">Temperature:</string>
 
-    <string name="activity_second_chargingstate2">Charging state : Charging</string>
-    <string name="activity_second_chargingstate4">Charging state : Discharging</string>
-    <string name="activity_second_chargingstateunknown">Charging state : Unknown</string>
-    <string name="activity_second_loadingdata">Loading data...</string>
-    <string name="activity_second_buttonresetcoo">Reset Wifi</string>
+<string name="activity_second_chargingstate2">Charging state : Charging</string>
+<string name="activity_second_chargingstate4">Charging state : Discharging</string>
+<string name="activity_second_chargingstateunknown">Charging state : Unknown</string>
+<string name="activity_second_loadingdata">Loading data...</string>
+<string name="activity_second_buttonresetcoo">Reset Wifi</string>
 
 <string name="activity_second_menusettings">Settings</string>
 <string name="activity_second_menuabout">About</string>
@@ -67,6 +68,7 @@
 <string name="view_about_creator">Created at the LAB SI of the Lycée Saint-Éxupery in Parentis-en-Born.</string>
 
 <string name="cantconnect">Unable to connect to the RooWifi card!\nHave you entered the correct IP address?</string>
+<string name="cantconnect1">Unable to connect to the RooWifi card!\nWould you like to edit the IP address?</string>
 <string name="connected1">Connect to</string>
 <string name="connected2">successful!</string>
 
@@ -74,4 +76,5 @@
 
 <string name="pdialog_tryconnect">Attempting to connect</string>
 <string name="pdialog_wait">Please wait...</string>
+
 </resources>

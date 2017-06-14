@@ -1,5 +1,6 @@
 package labsi.roowificontroller;
 import android.app.AlertDialog;
+import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
@@ -13,6 +14,7 @@ import android.webkit.WebView;
 import android.widget.RelativeLayout;
 import android.widget.TabHost;
 import android.widget.TextView;
+
 import com.koushikdutta.async.future.FutureCallback;
 import com.koushikdutta.ion.Ion;
 import org.w3c.dom.Document;
@@ -50,16 +52,18 @@ public class SecondActivity extends AppCompatActivity {
     NodeList nodelist19;
 
     RelativeLayout layout_joystick;
-    //ImageView image_joystick, image_border;
-    //TextView textView1, textView2, textView3, textView4, textView5;
     TextView textView1, textView2, textView5;
     JoyStickClass js;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_second);
 
         final TinyDB tinyDB = new TinyDB(this);
+        final String IP = tinyDB.getString("ip");
+
+        CheckConnection(IP);
 
         TabHost host = (TabHost)findViewById(R.id.tabHost);
         host.setup();
@@ -73,7 +77,7 @@ public class SecondActivity extends AppCompatActivity {
         spec.setIndicator("");
         host.addTab(spec);
 
-        final String IP = tinyDB.getString("ip");
+
         TextView textView_IP = (TextView) findViewById(R.id.textView_IP);
         textView_IP.setText("IP : " + IP);
 
@@ -90,45 +94,6 @@ public class SecondActivity extends AppCompatActivity {
                         }
                     })
                     .show();
-        }
-
-        if(!ConnexionInternet.isConnectedInternet(SecondActivity.this))
-        {
-            new AlertDialog.Builder(this)
-                    .setTitle(R.string.error)
-                    .setMessage(getResources().getString(R.string.activity_second_nonetwork))
-                    .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
-                        public void onClick(DialogInterface dialog, int which) {
-                            Intent nintent;
-                            nintent = new Intent(SecondActivity.this, MainActivity.class);
-                            startActivity(nintent);
-                        }
-                    })
-                    .show();
-        }
-        else {
-            TinyDB tinyDB1 = new TinyDB(SecondActivity.this);
-            int downloadeachtick = tinyDB1.getInt("downloadeachtick");
-            if (downloadeachtick == 1) {
-                TinyDB tinyDB2 = new TinyDB(this);
-                int ticknomber = tinyDB2.getInt("eachtick");
-                ticknomber = ticknomber*1000;
-                Timer timerAsync = new Timer();
-                TimerTask timerTaskAsync = new TimerTask() {
-                    @Override
-                    public void run() {
-                        runOnUiThread(new Runnable() {
-                            @Override public void run() {
-                                new DownloadXML().execute();
-                            }
-                        });
-                    }
-                };
-                timerAsync.schedule(timerTaskAsync, 0, ticknomber);
-            }
-            else {
-                new DownloadXML().execute();
-            }
         }
 
         TinyDB tinyDB1 = new TinyDB(SecondActivity.this);
@@ -166,8 +131,6 @@ public class SecondActivity extends AppCompatActivity {
                         || arg1.getAction() == MotionEvent.ACTION_MOVE) {
                     textView1.setText("X : " + String.valueOf(js.getX()));
                     textView2.setText("Y : " + String.valueOf(js.getY()));
-             //       textView3.setText("Angle : " + String.valueOf(js.getAngle()));
-          //          textView4.setText("Distance : " + String.valueOf(js.getDistance()));
                     TinyDB tinyDB = new TinyDB(SecondActivity.this);
                     String IP = tinyDB.getString("ip");
                     WebView myWebView = (WebView) findViewById(R.id.webview);
@@ -208,13 +171,99 @@ public class SecondActivity extends AppCompatActivity {
                 } else if(arg1.getAction() == MotionEvent.ACTION_UP) {
                     textView1.setText("X : 0");
                     textView2.setText("Y : 0");
-     //               textView3.setText("Angle :");
-     //               textView4.setText("Distance :");
                     textView5.setText(R.string.activity_second_direction_center);
                 }
                 return true;
             }
         });
+    }
+
+    private void CheckConnection(final String IP) {
+        final ProgressDialog pDialog;
+        pDialog = new ProgressDialog(SecondActivity.this);
+        pDialog.setTitle(R.string.pdialog_tryconnect);
+        pDialog.setCancelable(false);
+        pDialog.setMessage(getResources().getString(R.string.pdialog_wait));
+        pDialog.setIndeterminate(false);
+        pDialog.show();
+
+        Ion.with(getApplicationContext())
+                .load("http://" + IP + "/roomba.xml")
+                .noCache()
+                .asString()
+                .setCallback(new FutureCallback<String>() {
+                    @Override
+                    public void onCompleted(Exception e, String result) {
+                        if (result == null) {
+                            pDialog.dismiss();
+                            new AlertDialog.Builder(SecondActivity.this)
+                                    .setTitle(R.string.error)
+                                    .setCancelable(false)
+                                    .setMessage(getResources().getString(R.string.cantconnect1))
+                                    .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+                                        public void onClick(DialogInterface dialog, int which) {
+                                            Intent intent = new Intent(SecondActivity.this,MainActivity.class);
+                                            startActivity(intent);
+                                        }
+                                    })
+                                    .setNegativeButton(android.R.string.no, new DialogInterface.OnClickListener() {
+                                        public void onClick(DialogInterface dialog, int which) {
+                                            System.exit(0);
+                                        }
+                                    })
+                                    .show();
+                        }
+                        else {
+                            if (result.startsWith("<response>")) {
+                                pDialog.dismiss();
+                                Init();
+                            } else {
+                                pDialog.dismiss();
+                                new AlertDialog.Builder(SecondActivity.this)
+                                        .setTitle(R.string.error)
+                                        .setCancelable(false)
+                                        .setMessage(getResources().getString(R.string.cantconnect1))
+                                        .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+                                            public void onClick(DialogInterface dialog, int which) {
+                                                Intent intent = new Intent(SecondActivity.this,MainActivity.class);
+                                                startActivity(intent);
+                                            }
+                                        })
+                                        .setNegativeButton(android.R.string.no, new DialogInterface.OnClickListener() {
+                                            public void onClick(DialogInterface dialog, int which) {
+                                                System.exit(0);
+                                            }
+                                        })
+                                        .show();
+                            }
+                        }
+                    }
+                });
+    }
+
+    private void Init() {
+        TinyDB tinyDB1 = new TinyDB(SecondActivity.this);
+        int downloadeachtick = tinyDB1.getInt("downloadeachtick");
+        if (downloadeachtick == 1) {
+            TinyDB tinyDB2 = new TinyDB(this);
+            int ticknomber = tinyDB2.getInt("eachtick");
+            ticknomber = ticknomber*1000;
+            Timer timerAsync = new Timer();
+            TimerTask timerTaskAsync = new TimerTask() {
+                @Override
+                public void run() {
+                    runOnUiThread(new Runnable() {
+                        @Override public void run() {
+                                 new DownloadXML().execute();
+                        }
+                    });
+                }
+            };
+            timerAsync.schedule(timerTaskAsync, 0, ticknomber);
+        }
+        else {
+             new DownloadXML().execute();
+        }
     }
 
     public void Commander(View view) {
@@ -588,8 +637,12 @@ public class SecondActivity extends AppCompatActivity {
                                                                                                 int Capacity = Integer.parseInt(cap);
                                                                                                 int Charge = Integer.parseInt(cha);
                                                                                                 int a = Charge * 100;
-                                                                                                int percent = a/Capacity;
-                                                                                                textView20.setText(getResources().getString(R.string.activity_second_batterylevel)+" "+percent+" %");
+                                                                                                if (Capacity == 0){
+                                                                                                }
+                                                                                                else {
+                                                                                                    int percent = a/Capacity;
+                                                                                                    textView20.setText(getResources().getString(R.string.activity_second_batterylevel)+" "+percent+" %");
+                                                                                                }
 
                                                                                                 int chargingstate = Integer.parseInt(getNode("value", eElement14));
                                                                                                 TextView textView7 = (TextView) findViewById(R.id.textView7);
@@ -659,7 +712,7 @@ public class SecondActivity extends AppCompatActivity {
     static final int MIN_DISTANCE = 150;
 
     @Override
-    public boolean onTouchEvent(MotionEvent event)
+    public boolean onTouchEvent(MotionEvent event) //Tabs
     {
         switch(event.getAction())
         {

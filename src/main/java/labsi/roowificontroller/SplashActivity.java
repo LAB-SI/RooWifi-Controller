@@ -1,9 +1,11 @@
 package labsi.roowificontroller;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.widget.TextView;
+
 public class SplashActivity extends AppCompatActivity {
 
     @Override
@@ -11,6 +13,25 @@ public class SplashActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
 
+        if(!ConnexionInternet.isConnectedInternet(SplashActivity.this))
+        {
+            new AlertDialog.Builder(this)
+                    .setTitle(R.string.error)
+                    .setCancelable(false)
+                    .setMessage(getResources().getString(R.string.activity_second_nonetwork))
+                    .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int which) {
+                            System.exit(0);
+                        }
+                    })
+                    .show();
+        }
+        else {
+            init();
+        }
+    }
+
+    private void init() {
         TinyDB tinyDB = new TinyDB(SplashActivity.this);
         tinyDB.putInt("actualisation", 0);
 
