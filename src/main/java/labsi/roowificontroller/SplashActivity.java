@@ -1,8 +1,12 @@
 package labsi.roowificontroller;
 
+import android.app.Activity;
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
@@ -62,5 +66,20 @@ public class SplashActivity extends AppCompatActivity {
     protected void onPause() {
         super.onPause();
         finish();
+    }
+
+    private static class ConnexionInternet
+    {
+        static boolean isConnectedInternet(Activity activity)
+        {
+            ConnectivityManager connectivityManager = (ConnectivityManager)activity.getSystemService(Context.CONNECTIVITY_SERVICE);
+            NetworkInfo networkInfo = connectivityManager.getActiveNetworkInfo();
+            if (networkInfo != null)
+            {
+                NetworkInfo.State networkState = networkInfo.getState();
+                return networkState.compareTo(NetworkInfo.State.CONNECTED) == 0;
+            }
+            else return false;
+        }
     }
 }

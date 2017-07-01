@@ -2,6 +2,9 @@ package labsi.roowificontroller;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
+import android.content.res.Configuration;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -111,6 +114,22 @@ public class SecondActivity extends AppCompatActivity {
             textView5.setVisibility(View.GONE);
             textView61.setVisibility(View.GONE);
             textView19.setVisibility(View.GONE);
+
+            TextView textView50 = (TextView)findViewById(R.id.textView50);
+            TextView textView49 = (TextView)findViewById(R.id.textView49);
+            TextView textView48 = (TextView)findViewById(R.id.textView48);
+            TextView textView47 = (TextView)findViewById(R.id.textView47);
+            TextView textView46 = (TextView)findViewById(R.id.textView46);
+            TextView textView42 = (TextView)findViewById(R.id.textView42);
+            TextView textView41 = (TextView)findViewById(R.id.textView41);
+
+            textView50.setVisibility(View.GONE);
+            textView49.setVisibility(View.GONE);
+            textView48.setVisibility(View.GONE);
+            textView47.setVisibility(View.GONE);
+            textView46.setVisibility(View.GONE);
+            textView42.setVisibility(View.GONE);
+            textView41.setVisibility(View.GONE);
         }
 
         textView1 = (TextView)findViewById(R.id.textView1);
@@ -118,8 +137,24 @@ public class SecondActivity extends AppCompatActivity {
         textView5 = (TextView)findViewById(R.id.textView5);
         layout_joystick = (RelativeLayout)findViewById(R.id.layout_joystick);
         js = new JoyStickClass(getApplicationContext(), layout_joystick, R.drawable.image_button);
-        js.setStickSize(150, 150);
-        js.setLayoutSize(800, 800);
+
+        if ((getResources().getConfiguration().screenLayout &
+                Configuration.SCREENLAYOUT_SIZE_MASK) ==
+                Configuration.SCREENLAYOUT_SIZE_LARGE) {
+            js.setStickSize(200, 200);
+            js.setLayoutSize(1000, 1000);
+        }
+        else if((getResources().getConfiguration().screenLayout &
+                Configuration.SCREENLAYOUT_SIZE_MASK) ==
+                Configuration.SCREENLAYOUT_SIZE_SMALL){
+            js.setStickSize(120, 120);
+            js.setLayoutSize(600, 600);
+        }
+        else {
+            js.setStickSize(150, 150);
+            js.setLayoutSize(800, 800);
+        }
+
         js.setLayoutAlpha(150);
         js.setStickAlpha(100);
         js.setOffset(90);
@@ -289,6 +324,14 @@ public class SecondActivity extends AppCompatActivity {
                                         .show();
                             }
                             else if (result.equals("1")) {
+                                new AlertDialog.Builder(SecondActivity.this)
+                                        .setTitle(R.string.activity_second_commandtitle)
+                                        .setMessage(getResources().getString(R.string.activity_second_command))
+                                        .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+                                            public void onClick(DialogInterface dialog, int which) {
+                                            }
+                                        })
+                                        .show();
                                 myWebView.loadUrl("http://" + IP + "/rwr.cgi?exec=h");
                             }
                             else {
@@ -606,27 +649,27 @@ public class SecondActivity extends AppCompatActivity {
                                                                                                 TextView textView54 = (TextView) findViewById(R.id.textView54);
                                                                                                 TextView textView55 = (TextView) findViewById(R.id.textView55);
 
-                                                                                                textView35.setText("Bumps Wheeldrops : " + getNode("value", eElement));
-                                                                                                textView36.setText("Wall : " +getNode("value", eElement1));
-                                                                                                textView37.setText("Cliff Left : " + getNode("value", eElement2));
-                                                                                                textView38.setText("Cliff Front Left : " +getNode("value", eElement3));
-                                                                                                textView39.setText("Cliff Front Right : " +getNode("value", eElement4));
-                                                                                                textView40.setText("Cliff Right : " +getNode("value", eElement5));
+                                                                                                textView35.setText(getResources().getString(R.string.capteur_bumpswhelldrops) + " " + getNode("value", eElement));
+                                                                                                textView36.setText(getResources().getString(R.string.capteur_wall) + " " + getNode("value", eElement1));
+                                                                                                textView37.setText(getResources().getString(R.string.capteur_cliffleft) + " " + getNode("value", eElement2));
+                                                                                                textView38.setText(getResources().getString(R.string.capteur_cliffFrontLeft) + " " + getNode("value", eElement3));
+                                                                                                textView39.setText(getResources().getString(R.string.capteur_cliffFrontRight) + " " + getNode("value", eElement4));
+                                                                                                textView40.setText(getResources().getString(R.string.capteur_cliffright) + " " + getNode("value", eElement5));
                                                                                                 textView41.setText("Virtual Wall : " +getNode("value", eElement6));
                                                                                                 textView42.setText("Motor Overcurrents : " +getNode("value", eElement7));
-                                                                                                textView44.setText("Dirt Detector - Left : " +getNode("value", eElement8));
-                                                                                                textView45.setText("Dirt Detector - Right : " +getNode("value", eElement9));
+                                                                                                textView44.setText(getResources().getString(R.string.capteur_DirtDetectorLeft) + " " + getNode("value", eElement8));
+                                                                                                textView45.setText(getResources().getString(R.string.capteur_DirtDetectorRight) + " " + getNode("value", eElement9));
 
                                                                                                 textView46.setText("Remote Opcode : " +getNode("value", eElement10));
                                                                                                 textView47.setText("Buttons : " +getNode("value", eElement11));
                                                                                                 textView48.setText("Distance : " +getNode("value", eElement12));
                                                                                                 textView49.setText("Angle : " +getNode("value", eElement13));
                                                                                                 textView50.setText("Charging State : " +getNode("value", eElement14));
-                                                                                                textView51.setText("Voltage : " +getNode("value", eElement15));
-                                                                                                textView52.setText("Current : " +getNode("value", eElement16));
-                                                                                                textView53.setText("Temperature : " +getNode("value", eElement17));
-                                                                                                textView54.setText("Charge : " +getNode("value", eElement18));
-                                                                                                textView55.setText("Capacity : " +getNode("value", eElement19));
+                                                                                                textView51.setText(getResources().getString(R.string.capteur_voltage) + " " + getNode("value", eElement15));
+                                                                                                textView52.setText(getResources().getString(R.string.capteur_current) + " " + getNode("value", eElement16));
+                                                                                                textView53.setText(getResources().getString(R.string.capteur_temperature) + " " + getNode("value", eElement17));
+                                                                                                textView54.setText(getResources().getString(R.string.capteur_charge) + " " + getNode("value", eElement18));
+                                                                                                textView55.setText(getResources().getString(R.string.capteur_capacity) + " " + getNode("value", eElement19));
 
                                                                                                 TextView textView14 = (TextView) findViewById(R.id.textView14);
                                                                                                 textView14.setText(getResources().getString(R.string.activity_second_temperature) + " " +getNode("value", eElement17)+"°C" );
@@ -691,10 +734,20 @@ public class SecondActivity extends AppCompatActivity {
                 startActivity(intent);
                 return true;
             case R.id.action_about:
+
+                PackageInfo pInfo = null;
+
+                try {
+                    pInfo = getPackageManager().getPackageInfo(getPackageName(), 0);
+                } catch (PackageManager.NameNotFoundException e) {
+                    e.printStackTrace();
+                }
+                String version = pInfo.versionName;
+
                 View aboutview = View.inflate(this, R.layout.view_about, null);
 
                 AlertDialog.Builder builder = new AlertDialog.Builder(this);
-                builder.setTitle("RooWifi Controller v"+ version.version);
+                builder.setTitle("RooWifi Controller v"+ version);
                 builder.setIcon(R.drawable.logo);
                 builder.setView(aboutview)
                         .setPositiveButton("OK", new DialogInterface.OnClickListener() {

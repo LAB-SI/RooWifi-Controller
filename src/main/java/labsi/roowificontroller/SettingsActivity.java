@@ -113,13 +113,13 @@ public class SettingsActivity extends AppCompatActivity implements SeekBar.OnSee
                 });
 
     }
+
     public void reinitialiser(View view) {
+
         TinyDB tinyDB = new TinyDB(this);
-        tinyDB.putInt("downloadeachtick", 0);
         tinyDB.clear();
         Toast.makeText(this, getResources().getString(R.string.activity_settings_settinsreseted), Toast.LENGTH_LONG).show();
-        Intent intent = new Intent(SettingsActivity.this,SplashActivity.class);
-        startActivity(intent);
+        System.exit(0);
 
     }
 
@@ -163,6 +163,7 @@ public class SettingsActivity extends AppCompatActivity implements SeekBar.OnSee
             tinyDB.putInt("downloadeachtick", 0);
         }
     }
+
     public void checkbox1_clicked(View v) {
         CheckBox checkbox =(CheckBox)findViewById(R.id.checkBox2);
         if(checkbox.isChecked()){
