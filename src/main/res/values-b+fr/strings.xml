@@ -4,6 +4,32 @@
     <string name="activity_main_title">Connexion à la carte RooWifi</string>
     <string name="activity_main_button">Se connecter</string>
     <string name="activity_main_forgotip">Vous avez oublié de renseigner l\'adresse IP !</string>
+    <string name="activity_main_ipadress">Adresse IP</string>
+
+    <string name="activity_main_tuto1">Comment récupérer l\'adresse IP ?</string>
+    <string name="activity_main_tuto2">Pour récupérer l\'adresse IP de votre carte RooWifi, vous pouvez suivre ce cours tutoriel :</string>
+    <string name="activity_main_tuto3">Premièrement, branchez le <b>dock</b> pour votre aspirateur Roomba et posez l\'aspirateur sur celui-ci.</string>
+    <string name="activity_main_tuto4">Allumez l\'aspirateur et branchez la carte RooWifi sur <b>le port</b> au dessus de l\'aspirateur. (voir ci-dessous)</string>
+    <string name="activity_main_tuto5">Après avoir attendu quelques secondes, connectez vous depuis votre ordinateur au nouveau réseau WiFi intitulé <b>"ROOMBA WR"</b>.</string>
+    <string name="activity_main_tuto6">Depuis votre navigateur, entrez maintenant l\'adresse <b>"http://10.0.0.1/"</b>. Une fois la page chargé rendez-vous dans l\'onglet <b>"SetUp Wi-fi Configuration"</b></string>
+    <string name="activity_main_tuto7">Dans le menu <b>"Wi-Fi Infrastructure Properties"</b> entrez le <b>SSID</b> de votre réseau WiFi personnel, le <b>type de clé</b> (Key Type) et ensuite la <b>clé de cryptage réseau</b> (Key).</string>
+    <string name="activity_main_tuto8">Cliquez ensuite sur le bouton <b>"Save / Reboot"</b> pour sauvegarder les paramètres.</string>
+    <string name="activity_main_tuto9">Patientez quelques secondes. Connectez vous sur votre réseau local. Depuis votre navigateur, entrez dans la page de configuration de votre routeur (souvent 192.168.1.1 ou 192.168.0.1).</string>
+    <string name="activity_main_tuto10">Dans les appareils connectés à votre réseau local, vous devez voir un appareil nommé <b>"ROOMBA"</b>. Récuperez en l\'adresse IP et appuyez sur le bouton ci-dessus, <b>"Connecter"</b>.</string>
+
+    <string name="capteur_bumpswhelldrops">Bumps Wheeldrops :</string>
+    <string name="capteur_wall">Mur :</string>
+    <string name="capteur_cliffleft">Cliff Gauche :</string>
+    <string name="capteur_cliffright">Cliff Droite :</string>
+    <string name="capteur_cliffFrontLeft">Cliff Avant Gauche:</string>
+    <string name="capteur_cliffFrontRight">Cliff Avant Droit :</string>
+    <string name="capteur_DirtDetectorLeft">Détecteur de saleté - Gauche :</string>
+    <string name="capteur_DirtDetectorRight">Détecteur de saleté - Droite :</string>
+    <string name="capteur_voltage">Tension :</string>
+    <string name="capteur_current">Current :</string>
+    <string name="capteur_temperature">Température :</string>
+    <string name="capteur_charge">Charge :</string>
+    <string name="capteur_capacity">Capacité :</string>
 
     <string name="activity_second_information">Pour plus d\'informations à propos des capteurs, glissez vers la droite.</string>
     <string name="activity_second_nonetwork">Vous n\'êtes connecté à aucun réseau !\nUne connexion WiFi est nécessaire.</string>
@@ -41,6 +67,9 @@
     <string name="activity_second_menusettings">Paramètres</string>
     <string name="activity_second_menuabout">À propos</string>
 
+    <string name="activity_second_commandtitle">Mode manuel</string>
+    <string name="activity_second_command">Vous pouvez désormais utiliser le joystick pour controler votre aspirateur Roomba !</string>
+
     <string name="activity_settings_title">Paramètres</string>
     <string name="activity_settings_modifip">Modifier adresse IP</string>
     <string name="activity_settings_buttonedit">Modifier</string>
@@ -60,7 +89,7 @@
     <string name="activity_settings_advancedmodeenabled">Mode avancé activé !</string>
     <string name="activity_settings_advancedmodedisabled">Mode avancé désactivé !</string>
 
-    <string name="view_about_infos">RooWifi Controller est une application qui va vous permettre de contrôler votre carte RooWifi ! Vous n\'avez qu\'à entrer l\'IP de celle-ci et le tour est joué !</string>
+    <string name="view_about_infos">RooWifi Controller est une application qui va vous permettre de contrôler votre carte RooWifi ! Vous n\'avez qu\'à entrer l\'IP de celle-ci et vous pouvez utiliser votre aspirateur Roomba !</string>
     <string name="view_about_credits">Crédits :\n- Valentin Charbonnier (valentinbreiz.github.io)\n- Ake Exorcist (JoyStick)\n- TinyDB (gestion données sauvegardées)</string>
     <string name="view_about_creator">Créé au LAB SI du lycée Saint-Éxupery à Parentis-en-Born.</string>
 

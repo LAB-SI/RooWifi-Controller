@@ -82,6 +82,7 @@ public class MainActivity extends AppCompatActivity {
                             Intent intent;
                             intent = new Intent(MainActivity.this, SecondActivity.class);
                             startActivity(intent);
+                            finish();
                         } else {
                             pDialog.dismiss();
                             new AlertDialog.Builder(MainActivity.this)
