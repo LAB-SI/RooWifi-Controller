@@ -13,6 +13,6 @@ You can go to the Wiki here : https://github.com/LAB-SI/RooWifi-Controller/wiki 
 Vous pouvez accéder au Wiki ici: https://github.com/LAB-SI/RooWifi-Controller/wiki/Acceuil (fr)
 
 ## Download
-You can download the app in the Google Play Store here: Link soon... ;)
+You can download the app in the Google Play Store here: Link VERY soon... ;)
 
 Or you can go in the release tab: https://github.com/LAB-SI/RooWifi-Controller/releases
