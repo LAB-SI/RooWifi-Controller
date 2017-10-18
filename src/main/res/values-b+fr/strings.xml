@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+    <string name="menu_settings">Paramètres</string>
+
     <string name="activity_main_title">Connexion à la carte RooWifi</string>
     <string name="activity_main_button">Se connecter</string>
     <string name="activity_main_forgotip">Vous avez oublié de renseigner l\'adresse IP !</string>

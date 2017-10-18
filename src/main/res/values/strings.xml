@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="link"><a href="https://github.com/valentinbreiz/RooWifi-Controller">GitHub Page of the project</a></string>
     <string name="menu_settings">Settings</string>
     <string name="activity_main_title">Connect to the RooWifi card</string>
     <string name="activity_main_button">Connect</string>
     <string name="activity_main_forgotip">You forgot to enter the IP address!</string>
-    <string name="activity_main_ipadress">IP Adress</string>
+    <string name="activity_main_ipadress">IP Address</string>
 
     <string name="activity_main_tuto1">How to get the IP address?</string>
     <string name="activity_main_tuto2">To retrieve the IP address of your RooWifi card, you can follow this short tutorial:</string>
